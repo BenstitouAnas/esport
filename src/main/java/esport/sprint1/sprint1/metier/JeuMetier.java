@@ -7,4 +7,7 @@ import java.util.List;
 public interface JeuMetier {
     Jeu saaveJeu(Jeu j);
     List<Jeu> listJeux();
+    boolean deleteJeu(Long id);
+    Jeu getJeu(Long id);
+    Jeu updateJeu(Long id, Jeu j);
 }

@@ -23,4 +23,21 @@ public class JeuMetierImpl implements JeuMetier {
     public List<Jeu> listJeux() {
         return jeuRepository.findAll();
     }
+
+    @Override
+    public boolean deleteJeu(Long id) {
+        jeuRepository.delete(id);
+        return true;
+    }
+
+    @Override
+    public Jeu getJeu(Long id) {
+        return jeuRepository.findOne(id);
+    }
+
+    @Override
+    public Jeu updateJeu(Long id, Jeu j) {
+        j.setId(id);
+        return jeuRepository.save(j);
+    }
 }
