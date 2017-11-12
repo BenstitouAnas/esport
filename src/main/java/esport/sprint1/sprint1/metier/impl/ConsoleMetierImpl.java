@@ -23,4 +23,21 @@ public class ConsoleMetierImpl implements ConsoleMetier {
     public List<Console> listConsoles() {
         return consoleRepository.findAll();
     }
+
+    @Override
+    public boolean deleteConsole(Long id) {
+        consoleRepository.delete(id);
+        return true;
+    }
+
+    @Override
+    public Console getConsole(Long id) {
+        return consoleRepository.findOne(id);
+    }
+
+    @Override
+    public Console updateConsole(Long id, Console c) {
+        c.setId(id);
+        return consoleRepository.save(c);
+    }
 }
