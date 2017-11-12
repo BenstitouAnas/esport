@@ -1,14 +1,11 @@
 package esport.sprint1.sprint1.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -30,9 +27,9 @@ public abstract class Tournois implements Serializable {
     private double prix;
     private String porte;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Temporal(TemporalType.DATE)
     private Date dateDebut;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Temporal(TemporalType.DATE)
     private Date dateFin;
 
     @ManyToOne(fetch=FetchType.LAZY)
