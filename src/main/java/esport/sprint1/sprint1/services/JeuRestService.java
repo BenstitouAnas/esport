@@ -16,7 +16,7 @@ public class JeuRestService {
         return jeuMetier.saaveJeu(j);
     }
 
-    @RequestMapping(value = "/jeux/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/jeux", method = RequestMethod.GET)
     public List<Jeu> listJeux() {
         return jeuMetier.listJeux();
     }

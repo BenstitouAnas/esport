@@ -15,7 +15,7 @@ public class OrganisateurRestService {
         return organisateurMetier.saveOrganisateur(o);
     }
 
-    @RequestMapping(value = "/organisateurs/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/organisateurs", method = RequestMethod.GET)
     public List<Organisateur> listOrganisateurs() {
         return organisateurMetier.listOrganisateurs();
     }

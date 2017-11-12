@@ -17,7 +17,7 @@ public class ConsoleRestService {
         return consoleMetier.saveConsole(c);
     }
 
-    @RequestMapping(value = "/consoles/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/consoles", method = RequestMethod.GET)
     public List<Console> listConsoles() {
         return consoleMetier.listConsoles();
     }

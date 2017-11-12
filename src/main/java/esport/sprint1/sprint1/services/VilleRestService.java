@@ -24,7 +24,7 @@ public class VilleRestService {
         return villeMetier.saveVille(v);
     }
 
-    @RequestMapping(value = "/villes/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/villes", method = RequestMethod.GET)
     public List<Ville> listVilles() {
         return villeMetier.listVilles();
     }
