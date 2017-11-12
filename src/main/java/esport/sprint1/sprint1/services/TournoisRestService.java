@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class TournoisRestService {
 
     @Autowired
@@ -33,7 +34,7 @@ public class TournoisRestService {
         return tournoisMetier.updateTournois(id, tournois);
     }
 
-    @RequestMapping(value = "/tournois{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tournois/{id}", method = RequestMethod.GET)
     public Tournois getTournois(@PathVariable Long id) {
         return tournoisMetier.getTournois(id);
     }

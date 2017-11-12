@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class JeuRestService {
 
     @RequestMapping(value = "/jeux", method = RequestMethod.POST)

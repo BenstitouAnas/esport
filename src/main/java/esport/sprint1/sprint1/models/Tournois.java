@@ -160,4 +160,6 @@ public abstract class Tournois implements Serializable {
     public void setLocal(Local local) {
         this.local = local;
     }
+
+
 }
