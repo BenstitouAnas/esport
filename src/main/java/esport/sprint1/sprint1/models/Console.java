@@ -18,11 +18,9 @@ public class Console implements Serializable{
     private String nom;
 
     @ManyToMany(mappedBy = "consoles", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Jeu> jeux;
 
     @OneToMany(mappedBy = "console")
-    @JsonIgnore
     private List<Tournois> tournois;
 
     public Console() {

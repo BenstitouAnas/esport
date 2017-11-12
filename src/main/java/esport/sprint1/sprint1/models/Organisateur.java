@@ -1,5 +1,8 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -31,10 +34,12 @@ public class Organisateur extends Utilisateur implements Serializable{
         this.organisateur = organisateur;
     }
 
+    @JsonIgnore
     public List<Tournois> getTournois() {
         return tournois;
     }
 
+    @JsonSetter
     public void setTournois(List<Tournois> tournois) {
         this.tournois = tournois;
     }

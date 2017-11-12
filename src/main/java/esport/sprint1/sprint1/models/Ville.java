@@ -1,5 +1,8 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -40,10 +43,12 @@ public class Ville implements Serializable{
         this.nom = nom;
     }
 
+    @JsonIgnore
     public List<Utilisateur> getUtilisateurs() {
         return utilisateurs;
     }
 
+    @JsonSetter
     public void setUtilisateurs(List<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
