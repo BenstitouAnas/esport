@@ -19,8 +19,6 @@ public class Tournois implements Serializable {
     private boolean publie;
     private double prix;
     private String porte;
-    private int nbJoueurs;
-    private int nbEquipes;
     private Date dateDebut;
     private Date dateFin;
 
@@ -30,7 +28,7 @@ public class Tournois implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORGANISATEUR_ID")
-    private Utilisateur organisateur;
+    private Organisateur organisateur;
 
     @ManyToOne
     @JoinColumn(name = "CONSOLE_ID", referencedColumnName = "ID")
@@ -43,14 +41,12 @@ public class Tournois implements Serializable {
     public Tournois() {
     }
 
-    public Tournois(String titre, String description, boolean publie, double prix, String porte, int nbJoueurs, int nbEquipes, Date dateDebut, Date dateFin, Local local, Utilisateur organisateur, Console console, Jeu jeu) {
+    public Tournois(String titre, String description, boolean publie, double prix, String porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu) {
         this.titre = titre;
         this.description = description;
         this.publie = publie;
         this.prix = prix;
         this.porte = porte;
-        this.nbJoueurs = nbJoueurs;
-        this.nbEquipes = nbEquipes;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.local = local;
@@ -107,22 +103,6 @@ public class Tournois implements Serializable {
         this.porte = porte;
     }
 
-    public int getNbJoueurs() {
-        return nbJoueurs;
-    }
-
-    public void setNbJoueurs(int nbJoueurs) {
-        this.nbJoueurs = nbJoueurs;
-    }
-
-    public int getNbEquipes() {
-        return nbEquipes;
-    }
-
-    public void setNbEquipes(int nbEquipes) {
-        this.nbEquipes = nbEquipes;
-    }
-
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -155,11 +135,11 @@ public class Tournois implements Serializable {
         this.jeu = jeu;
     }
 
-    public Utilisateur getOrganisateur() {
+    public Organisateur getOrganisateur() {
         return organisateur;
     }
 
-    public void setOrganisateur(Utilisateur organisateur) {
+    public void setOrganisateur(Organisateur organisateur) {
         this.organisateur = organisateur;
     }
 

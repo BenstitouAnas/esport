@@ -9,13 +9,20 @@ import java.util.Date;
 @Table(name = "TournoisIndividuel")
 public class TournoisIndividuel extends Tournois implements Serializable {
 
+    private int nbJoueurs;
     private String test = "Tournois Individuel";
 
     public TournoisIndividuel() {
     }
 
-    public TournoisIndividuel(String titre, String description, boolean publie, double prix, String porte, int nbJoueurs, int nbEquipes, Date dateDebut, Date dateFin, Local local, Utilisateur organisateur, Console console, Jeu jeu, String test) {
-        super(titre, description, publie, prix, porte, nbJoueurs, nbEquipes, dateDebut, dateFin, local, organisateur, console, jeu);
+    public TournoisIndividuel(int nbJoueurs, String test) {
+        this.nbJoueurs = nbJoueurs;
+        this.test = test;
+    }
+
+    public TournoisIndividuel(String titre, String description, boolean publie, double prix, String porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu, int nbJoueurs, String test) {
+        super(titre, description, publie, prix, porte, dateDebut, dateFin, local, organisateur, console, jeu);
+        this.nbJoueurs = nbJoueurs;
         this.test = test;
     }
 
@@ -27,4 +34,11 @@ public class TournoisIndividuel extends Tournois implements Serializable {
         this.test = test;
     }
 
+    public int getNbJoueurs() {
+        return nbJoueurs;
+    }
+
+    public void setNbJoueurs(int nbJoueurs) {
+        this.nbJoueurs = nbJoueurs;
+    }
 }

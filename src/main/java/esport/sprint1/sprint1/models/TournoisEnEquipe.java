@@ -10,13 +10,20 @@ import java.util.List;
 @Table(name = "TournoisEnEquipe")
 public class TournoisEnEquipe extends Tournois implements Serializable {
 
+    private int nbEquipes;
     private String test = "Tournois En Equipe";
 
     public TournoisEnEquipe() {
     }
 
-    public TournoisEnEquipe(String titre, String description, boolean publie, double prix, String porte, int nbJoueurs, int nbEquipes, Date dateDebut, Date dateFin, Local local, Utilisateur organisateur, Console console, Jeu jeu, String test) {
-        super(titre, description, publie, prix, porte, nbJoueurs, nbEquipes, dateDebut, dateFin, local, organisateur, console, jeu);
+    public TournoisEnEquipe(int nbEquipes, String test) {
+        this.nbEquipes = nbEquipes;
+        this.test = test;
+    }
+
+    public TournoisEnEquipe(String titre, String description, boolean publie, double prix, String porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu, int nbEquipes, String test) {
+        super(titre, description, publie, prix, porte, dateDebut, dateFin, local, organisateur, console, jeu);
+        this.nbEquipes = nbEquipes;
         this.test = test;
     }
 
@@ -26,5 +33,13 @@ public class TournoisEnEquipe extends Tournois implements Serializable {
 
     public void setTest(String test) {
         this.test = test;
+    }
+
+    public int getNbEquipes() {
+        return nbEquipes;
+    }
+
+    public void setNbEquipes(int nbEquipes) {
+        this.nbEquipes = nbEquipes;
     }
 }
