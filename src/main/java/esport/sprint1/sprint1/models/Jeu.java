@@ -71,10 +71,12 @@ public class Jeu implements Serializable{
         this.type = type;
     }
 
+    @JsonIgnore
     public List<Console> getConsoles() {
         return consoles;
     }
 
+    @JsonSetter
     public void setConsoles(List<Console> consoles) {
         this.consoles = consoles;
     }

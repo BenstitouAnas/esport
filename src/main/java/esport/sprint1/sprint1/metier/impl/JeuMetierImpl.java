@@ -2,6 +2,7 @@ package esport.sprint1.sprint1.metier.impl;
 
 import esport.sprint1.sprint1.dao.JeuRepository;
 import esport.sprint1.sprint1.metier.JeuMetier;
+import esport.sprint1.sprint1.models.Console;
 import esport.sprint1.sprint1.models.Jeu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,10 @@ public class JeuMetierImpl implements JeuMetier {
     public Jeu updateJeu(Long id, Jeu j) {
         j.setId(id);
         return jeuRepository.save(j);
+    }
+
+    @Override
+    public List<Console> getConsoles(Long id) {
+        return jeuRepository.findOne(id).getConsoles();
     }
 }
