@@ -23,4 +23,21 @@ public class OrganisateurMetierImpl implements OrganisateurMetier{
     public List<Organisateur> listOrganisateurs() {
         return organisateurRepository.findAll();
     }
+
+    @Override
+    public boolean deleteOrganisateur(Long id) {
+        organisateurRepository.delete(id);
+        return true;
+    }
+
+    @Override
+    public Organisateur getOrganisateur(Long id) {
+        return organisateurRepository.findOne(id);
+    }
+
+    @Override
+    public Organisateur updateOrganisateur(Long id, Organisateur organisateur) {
+        organisateur.setId(id);
+        return organisateurRepository.save(organisateur);
+    }
 }
