@@ -15,7 +15,7 @@ public class LocalRestService {
         return localMetier.saveLocal(l);
     }
 
-    @RequestMapping(value = "/locales", method = RequestMethod.GET)
+    @RequestMapping(value = "/locales/list", method = RequestMethod.GET)
     public List<Local> listLocales() {
         return localMetier.listLocales();
     }
