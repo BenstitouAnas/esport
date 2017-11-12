@@ -1,5 +1,10 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,6 +12,11 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(name = "indiv", value = TournoisIndividuel.class),
+        @JsonSubTypes.Type(name = "equipe", value = TournoisEnEquipe.class)
+})
 public abstract class Tournois implements Serializable {
 
     @Id
@@ -19,7 +29,10 @@ public abstract class Tournois implements Serializable {
     private boolean publie;
     private double prix;
     private String porte;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateDebut;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateFin;
 
     @ManyToOne(fetch=FetchType.LAZY)
