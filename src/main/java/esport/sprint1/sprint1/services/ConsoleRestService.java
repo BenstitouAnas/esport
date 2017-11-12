@@ -2,6 +2,8 @@ package esport.sprint1.sprint1.services;
 
 import esport.sprint1.sprint1.metier.ConsoleMetier;
 import esport.sprint1.sprint1.models.Console;
+import esport.sprint1.sprint1.models.Jeu;
+import esport.sprint1.sprint1.models.Tournois;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +35,16 @@ public class ConsoleRestService {
     @RequestMapping(value = "/consoles/{id}", method = RequestMethod.PUT)
     public Console updateConsole(@PathVariable Long id,  @RequestBody Console c) {
         return consoleMetier.updateConsole(id, c);
+    }
+
+    @RequestMapping(value = "/consoles/{id}/jeux", method = RequestMethod.GET)
+    public List<Jeu> getJeux(@PathVariable Long id) {
+        return consoleMetier.getJeux(id);
+    }
+
+    @RequestMapping(value = "/consoles/{id}/tournois", method = RequestMethod.GET)
+    public List<Tournois> getTournois(@PathVariable Long id) {
+        return consoleMetier.getTournois(id);
     }
 
     @Autowired
