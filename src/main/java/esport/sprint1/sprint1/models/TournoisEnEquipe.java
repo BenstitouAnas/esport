@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "TournoisEnEquipe")
 public class TournoisEnEquipe extends Tournois implements Serializable {
 
     private int nbEquipes;

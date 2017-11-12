@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Tournois implements Serializable {
+public abstract class Tournois implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
