@@ -10,4 +10,5 @@ public interface LocalMetier {
     boolean deleteLocal(Long id);
     Local getLocal(Long id);
     Local updateLocal(Long id, Local l);
+    boolean isExistLocal(double lat, double lon);
 }

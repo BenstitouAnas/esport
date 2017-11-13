@@ -40,4 +40,12 @@ public class LocalMetierImpl implements LocalMetier {
         l.setId(id);
         return localRepository.save(l);
     }
+
+    @Override
+    public boolean isExistLocal(double lat, double lon) {
+        Local l = localRepository.isExistLocal(lat, lon);
+        if(l != null)
+            return true;
+        return false;
+    }
 }

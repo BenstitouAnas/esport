@@ -36,6 +36,13 @@ public class LocalRestService {
         return localMetier.updateLocal(id, l);
     }
 
+    @RequestMapping(value = "/locales/exist", method = RequestMethod.GET)
+    public boolean isExistLocal(
+            @RequestParam(name = "lat", defaultValue = "") double lat,
+            @RequestParam(name = "lon", defaultValue = "") double lon) {
+        return localMetier.isExistLocal(lat, lon);
+    }
+
     @Autowired
     private LocalMetier localMetier;
 }
