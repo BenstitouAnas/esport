@@ -4,73 +4,117 @@ import { Console } from './Console';
 import { Local } from './Local';
 
 export class Tournoi {
-  private Nom: string;
-  private Description: string;
-  private DateDebut: Date;
-  private DateFin: Date;
-  private prix: number;
-  private publie: boolean;
-  private porte: boolean;
-  private local: Local;
-  private console: Console;
-  private jeu: Jeu;
-  private utilisateur: Organisateur;
-  constructor(Nom: string,
-              Description: string,
-              DateDebut: Date,
-              DateFin: Date,
-              prix: number,
-              console: Console,
-              jeu: Jeu
-  ) {
-    this.Nom = Nom;
-    this.Description = Description;
-    this.DateDebut = DateDebut;
-    this.DateFin = DateFin;
-    this.prix = prix;
-    this.setConsole(console);
-    this.setJeu(jeu);
-    this.local = null;
-    this.publie = false;
-    this.porte = false;
+  private _Nom: string;
+  private _Description: string;
+  private _DateDebut: Date;
+  private _DateFin: Date;
+  private _prix: number;
+  private _publie: boolean;
+  private _porte: boolean;
+  private _local: Local;
+  private _console: Console;
+  private _jeu: Jeu;
+  private _utilisateur: Organisateur;
+
+  constructor(Nom: string, Description: string, DateDebut: Date, DateFin: Date, prix: number, publie: boolean, porte: boolean, local: Local, console: Console, jeu: Jeu, utilisateur: Organisateur) {
+    this._Nom = Nom;
+    this._Description = Description;
+    this._DateDebut = DateDebut;
+    this._DateFin = DateFin;
+    this._prix = prix;
+    this._publie = publie;
+    this._porte = porte;
+    this._local = local;
+    this._console = console;
+    this._jeu = jeu;
+    this._utilisateur = utilisateur;
   }
-  setConsole(console: Console) {
-    this.console = console;
+
+  get Nom(): string {
+    return this._Nom;
   }
-  setJeu(jeu: Jeu) {
-    this.jeu = jeu;
+
+  set Nom(value: string) {
+    this._Nom = value;
   }
-  getNom() {
-    return this.Nom;
+
+  get Description(): string {
+    return this._Description;
   }
-  getDescription() {
-    return this.Description;
+
+  set Description(value: string) {
+    this._Description = value;
   }
-  getConsole() {
-    return this.console;
+
+  get DateDebut(): Date {
+    return this._DateDebut;
   }
-  getJeu() {
-    return this.jeu;
+
+  set DateDebut(value: Date) {
+    this._DateDebut = value;
   }
-  getDateDebut() {
-    return this.DateDebut;
+
+  get DateFin(): Date {
+    return this._DateFin;
   }
-  getDateFin() {
-    return this.DateFin;
+
+  set DateFin(value: Date) {
+    this._DateFin = value;
   }
-  getPrix() {
-    return this.prix;
+
+  get prix(): number {
+    return this._prix;
   }
-  getLocal() {
-    return this.local;
+
+  set prix(value: number) {
+    this._prix = value;
   }
-  getUtilisateur() {
-    return this.utilisateur;
+
+  get publie(): boolean {
+    return this._publie;
   }
-  getPorte() {
-    return this.porte;
+
+  set publie(value: boolean) {
+    this._publie = value;
   }
-  getPublie() {
-    return this.publie;
+
+  get porte(): boolean {
+    return this._porte;
+  }
+
+  set porte(value: boolean) {
+    this._porte = value;
+  }
+
+  get local(): Local {
+    return this._local;
+  }
+
+  set local(value: Local) {
+    this._local = value;
+  }
+
+  get console(): Console {
+    return this._console;
+  }
+
+  set console(value: Console) {
+    this._console = value;
+  }
+
+  get jeu(): Jeu {
+    return this._jeu;
+  }
+
+  set jeu(value: Jeu) {
+    this._jeu = value;
+  }
+
+  get utilisateur(): Organisateur {
+    return this._utilisateur;
+  }
+
+  set utilisateur(value: Organisateur) {
+    this._utilisateur = value;
   }
 }

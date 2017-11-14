@@ -1,10 +1,20 @@
 import { Utilisateur } from './Utilisateur';
+
 export class Organisateur extends Utilisateur {
-  Organisation: string;
-  constructor(Nom: string,
-              Prenom: string,
-              Organisation: string) {
+  private _organisation: string;
+
+
+  constructor(Nom: string, Prenom: string, organisation: string) {
     super(Nom, Prenom);
-    this.Organisation = Organisation;
+    this._organisation = organisation;
+  }
+
+
+  get organisation(): string {
+    return this._organisation;
+  }
+
+  set organisation(value: string) {
+    this._organisation = value;
   }
 }

@@ -1,10 +1,25 @@
 export class Local {
-  private Longitude: number;
-  private Latitude: number;
+  private _longitude: number;
+  private _latitude: number;
 
-  public constructor(Longitude: number,
-                     Latitude: number) {
-    this.Longitude = Longitude;
-    this.Latitude = Latitude;
+  constructor(longitude: number, latitude: number) {
+    this._longitude = longitude;
+    this._latitude = latitude;
+  }
+
+  get longitude(): number {
+    return this._longitude;
+  }
+
+  set longitude(value: number) {
+    this._longitude = value;
+  }
+
+  get latitude(): number {
+    return this._latitude;
+  }
+
+  set latitude(value: number) {
+    this._latitude = value;
   }
 }

@@ -2,17 +2,39 @@ import { Jeu } from './Jeu';
 
 export class Console {
   private _id: number;
-  private Nom: string;
-  private Jeux: Array<Jeu>
+  private _Nom: string;
+  private _Jeux: Array<Jeu>;
+
   public constructor(
     _id: number,
     Nom: string,
     Jeux: Array<Jeu>) {
     this._id = _id;
-    this.Nom = Nom;
-    this.Jeux = Jeux;
+    this._Nom = Nom;
+    this._Jeux = Jeux;
   }
-  getId() {
+
+  get id(): number {
     return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get Nom(): string {
+    return this._Nom;
+  }
+
+  set Nom(value: string) {
+    this._Nom = value;
+  }
+
+  get Jeux(): Array<Jeu> {
+    return this._Jeux;
+  }
+
+  set Jeux(value: Array<Jeu>) {
+    this._Jeux = value;
   }
 }
