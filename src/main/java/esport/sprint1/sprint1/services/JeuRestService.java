@@ -4,6 +4,8 @@ import esport.sprint1.sprint1.metier.JeuMetier;
 import esport.sprint1.sprint1.models.Console;
 import esport.sprint1.sprint1.models.Jeu;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class JeuRestService {
         return jeuMetier.getJeu(id);
     }
 
-    @RequestMapping(value = "/jeux/{id}")
+    @RequestMapping(value = "/jeux/{id}", method = RequestMethod.PUT)
     public Jeu updateJeu(@PathVariable Long id,  @RequestBody Jeu j) {
         return jeuMetier.updateJeu(id, j);
     }
@@ -40,6 +42,14 @@ public class JeuRestService {
     @RequestMapping(value = "/jeux/{id}/consoles", method = RequestMethod.GET)
     public List<Console> getConsoles(@PathVariable Long id) {
         return jeuMetier.getConsoles(id);
+    }
+
+    @RequestMapping(value = "/jeux/chercher", method = RequestMethod.GET)
+    public Page<Jeu> chercherJeu(
+            @RequestParam(name = "mot", defaultValue = "") String mot,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        return jeuMetier.chercherJeu("%" + mot + "%", new PageRequest(page, size));
     }
 
     @Autowired

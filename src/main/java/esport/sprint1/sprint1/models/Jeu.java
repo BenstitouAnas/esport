@@ -2,6 +2,7 @@ package esport.sprint1.sprint1.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +18,8 @@ public class Jeu implements Serializable{
 
     private String nom;
     private String afficheUrl;
-    private boolean type;
+
+    private boolean type = false;
 
     @ManyToMany
     @JoinTable(
@@ -71,12 +73,10 @@ public class Jeu implements Serializable{
         this.type = type;
     }
 
-    @JsonIgnore
     public List<Console> getConsoles() {
         return consoles;
     }
 
-    @JsonSetter
     public void setConsoles(List<Console> consoles) {
         this.consoles = consoles;
     }

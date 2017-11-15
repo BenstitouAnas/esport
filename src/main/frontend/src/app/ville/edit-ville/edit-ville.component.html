@@ -1,0 +1,45 @@
+<div class="container spacer">
+  <div class="panel panel-primary" *ngIf="mode==1">
+    <div class="panel-heading">Modifier Ville</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">Nom:</label>
+          <input type="text" class="form-control" [(ngModel)]="ville.nom" />
+        </div>
+
+        <button class="btn btn-primary" (click)="updateVille()">Save</button>
+
+      </div>
+
+      <div *ngIf="mode==2">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-primary" *ngIf="mode==2">
+    <div class="panel-heading">Confirmation</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">ID:</label>
+          <label>{{ville.id}}</label>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Nom:</label>
+          <label>{{ville.nom}}</label>
+        </div>
+
+        <button class="btn btn-primary" (click)="mode=1">Confirmer</button>
+
+      </div>
+
+      <div *ngIf="mode==2">
+
+      </div>
+    </div>
+  </div>
+
+</div>

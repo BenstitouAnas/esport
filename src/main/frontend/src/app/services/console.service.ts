@@ -16,6 +16,11 @@ export class ConsoleService {
     this._consolesUrl = this._config.serverURL + "consoles/";
   }
 
+  getAllConsoles(){
+    return this._http.get(this._consolesUrl)
+      .map(resp => resp.json());
+  }
+
   getListConsoles(page:number, size:number){
     return this._http.get(this._consolesUrl + "chercher?size=" + size + "&page=" + page)
       .map(resp => resp.json());

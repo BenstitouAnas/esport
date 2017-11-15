@@ -4,6 +4,8 @@ package esport.sprint1.sprint1.services;
 import esport.sprint1.sprint1.metier.VilleMetier;
 import esport.sprint1.sprint1.models.Ville;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,5 +40,13 @@ public class VilleRestService {
     @RequestMapping(value = "/villes/{id}", method = RequestMethod.PUT)
     public Ville updateVille(@PathVariable Long id, @RequestBody Ville v) {
         return villeMetier.updateVille(id, v);
+    }
+
+    @RequestMapping(value = "/villes/chercher", method = RequestMethod.GET)
+    public Page<Ville> chercherVille(
+            @RequestParam(name = "mot", defaultValue = "") String mot,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        return villeMetier.chercherVille("%" + mot + "%", new PageRequest(page, size));
     }
 }

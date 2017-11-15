@@ -46,10 +46,12 @@ public class Console implements Serializable{
         this.nom = nom;
     }
 
+    @JsonIgnore
     public List<Jeu> getJeux() {
         return jeux;
     }
 
+    @JsonSetter
     public void setJeux(List<Jeu> jeux) {
         this.jeux = jeux;
     }

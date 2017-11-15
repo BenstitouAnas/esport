@@ -5,6 +5,8 @@ import esport.sprint1.sprint1.metier.JeuMetier;
 import esport.sprint1.sprint1.models.Console;
 import esport.sprint1.sprint1.models.Jeu;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +42,11 @@ public class JeuMetierImpl implements JeuMetier {
     public Jeu updateJeu(Long id, Jeu j) {
         j.setId(id);
         return jeuRepository.save(j);
+    }
+
+    @Override
+    public Page<Jeu> chercherJeu(String mot, Pageable pageable) {
+        return jeuRepository.chercherJeu(mot, pageable);
     }
 
     @Override

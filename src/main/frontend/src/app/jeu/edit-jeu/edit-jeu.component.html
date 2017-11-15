@@ -1,0 +1,71 @@
+<div class="container spacer">
+  <div class="panel panel-primary" *ngIf="mode==1">
+    <div class="panel-heading">Modifier Jeu</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">Nom:</label>
+          <input type="text" class="form-control" [(ngModel)]="jeu.nom" />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Affishe URL:</label>
+          <input type="text" class="form-control" [(ngModel)]="jeu.afficheUrl" />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Type:</label>
+          <select class="form-control" [(ngModel)]="jeu.type">
+            <option [ngValue]="true" [selected]="jeu.type == true" >True</option>
+            <option [ngValue]="false" [selected]="jeu.type == false" >False</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Console:</label>
+          <angular2-multiselect [data]="allConsoles"
+                                [(ngModel)]="selectedItems"
+                                [settings]="dropdownSettings">
+            <c-item>
+              <ng-template let-item="item">
+                <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
+              </ng-template>
+            </c-item>
+          </angular2-multiselect>
+        </div>
+
+        <button class="btn btn-primary" (click)="updateJeu()">Save</button>
+
+      </div>
+
+      <div *ngIf="mode==2">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-primary" *ngIf="mode==2">
+    <div class="panel-heading">Confirmation</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">ID:</label>
+          <label>{{jeu.id}}</label>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Nom:</label>
+          <label>{{jeu.nom}}</label>
+        </div>
+
+        <button class="btn btn-primary" (click)="mode=1">Confirmer</button>
+
+      </div>
+
+      <div *ngIf="mode==2">
+
+      </div>
+    </div>
+  </div>
+
+</div>

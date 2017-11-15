@@ -58,11 +58,11 @@ export class ConsoleComponent implements OnInit {
     this.doSearch();
   }
 
-  onEditContact(id:number){
+  onEditConsole(id:number){
     this.router.navigate(['edit-console', id]);
   }
 
-  onDeleteContact(consol:Console){
+  onDeleteConsole(consol:Console){
 
     swal({
       title: 'Are you sure?',
@@ -71,7 +71,7 @@ export class ConsoleComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it'
-    }).then(()=> this.deleteContact(consol)).then(function(){
+    }).then(()=> this.deleteConsole(consol)).then(function(){
       swal(
         'Deleted!',
         'Your imaginary file has been deleted.',
@@ -89,7 +89,7 @@ export class ConsoleComponent implements OnInit {
     });
   }
 
-  deleteContact(consol:Console){
+  deleteConsole(consol:Console){
     this.consoleService.deleteConsole(consol.id)
       .subscribe(data => {
         this.pageConsoles.content.splice(
