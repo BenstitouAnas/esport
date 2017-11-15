@@ -5,6 +5,9 @@ import esport.sprint1.sprint1.models.Console;
 import esport.sprint1.sprint1.models.Jeu;
 import esport.sprint1.sprint1.models.Tournois;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +49,14 @@ public class ConsoleRestService {
     @RequestMapping(value = "/consoles/{id}/tournois", method = RequestMethod.GET)
     public List<Tournois> getTournois(@PathVariable Long id) {
         return consoleMetier.getTournois(id);
+    }
+
+    @RequestMapping(value = "/consoles/chercher", method = RequestMethod.GET)
+    public Page<Console> chercherConsole(
+            @RequestParam(name = "mot", defaultValue = "") String mot,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        return consoleMetier.chercherConsole("%" + mot + "%", new PageRequest(page, size));
     }
 
     @Autowired

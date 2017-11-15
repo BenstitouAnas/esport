@@ -6,6 +6,8 @@ import esport.sprint1.sprint1.models.Console;
 import esport.sprint1.sprint1.models.Jeu;
 import esport.sprint1.sprint1.models.Tournois;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,5 +53,10 @@ public class ConsoleMetierImpl implements ConsoleMetier {
     @Override
     public List<Tournois> getTournois(Long id) {
         return consoleRepository.findOne(id).getTournois();
+    }
+
+    @Override
+    public Page<Console> chercherConsole(String mot, Pageable pageable) {
+        return consoleRepository.chercherConsole(mot, pageable);
     }
 }
