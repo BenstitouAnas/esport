@@ -14,6 +14,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 import { EditConsoleComponent } from './console/edit-console/edit-console.component';
 import { NewConsoleComponent } from './console/new-console/new-console.component';
 import { JeuComponent } from './jeu/jeu.component';
+import { EditJeuComponent } from './jeu/edit-jeu/edit-jeu.component';
 
 const appRouter: Routes = [
   {path: 'consoles', component: ConsoleComponent},
@@ -27,7 +28,8 @@ const appRouter: Routes = [
     ConsoleComponent,
     EditConsoleComponent,
     NewConsoleComponent,
-    JeuComponent
+    JeuComponent,
+    EditJeuComponent
   ],
   imports: [
     BrowserModule,
