@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Config} from "../../models/Config";
-import { Jeu } from "../../models/Jeu"
+import { Jeu } from "../../models/Jeu";
 
 @Injectable()
 export class JeuService {

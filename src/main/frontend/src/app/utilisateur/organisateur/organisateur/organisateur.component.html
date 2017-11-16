@@ -1,3 +1,49 @@
-<p>
-  organisateur works!
-</p>
+<div class="container spacer">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste Organisateurs</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Mot Cle:</label>
+        <input type="text" [(ngModel)]="mot" />
+        <button class="btn btn-primary" (click)="chercher()">Chercher</button>
+
+        <span class="pull-right">
+        <select class="form-control" [ngModel]="size" (change)="setPageSize($event.target.value)">
+          <option [value]="5">5</option>
+          <option [value]="10">10</option>
+          <option [value]="15">15</option>
+          <option [value]="20">20</option>
+        </select>
+      </span>
+      </div>
+
+      <table class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Ville</th>>
+          <th>Organisation</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let organisateur of pageOrganisateurs?.content">
+          <td>{{organisateur.id}}</td>
+          <td>{{organisateur.nom}}</td>
+          <td>{{organisateur.type}}</td>
+          <td>
+            <a (click)="onEditJeu(jeu.id)" class="clickable">Edit</a>
+          </td>
+          <td>
+            <a (click)="onDeleteJeu(jeu)" class="clickable">Delete</a>
+          </td>
+        </tr>
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages; let i=index"><a class="clickable" (click)="goToPage(i)">{{i+1}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,7 @@ import { VilleComponent } from './ville/ville/ville.component';
 import { EditVilleComponent } from './ville/edit-ville/edit-ville.component';
 import { NewVilleComponent } from './ville/new-ville/new-ville.component';
 import {VilleService} from "./services/ville.service";
+import {OrganisateurService} from "./services/organisateur.service";
 
 const appRouter: Routes = [
   {path: 'consoles', component: ConsoleComponent},
@@ -69,7 +70,8 @@ const appRouter: Routes = [
     SweetAlertService,
     ConsoleService,
     JeuService,
-    VilleService
+    VilleService,
+    OrganisateurService
   ],
   bootstrap: [AppComponent]
 })
