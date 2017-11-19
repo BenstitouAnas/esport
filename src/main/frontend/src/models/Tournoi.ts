@@ -4,15 +4,20 @@ import { Console } from './Console';
 import { Local } from './Local';
 
 export class Tournoi {
-  nom: string = "";
-  Description: string = "";
-  DateDebut: Date;
-  DateFin: Date;
+  id: number = null;
+  titre: string = "";
+  description: string = "";
+  dateDebut: Date;
+  dateFin: Date;
   prix: number = 0;
   publie: boolean = false;
   porte: boolean = false;
   local: Local = null;
   console: Console = null
   jeu: Jeu = null;
-  utilisateur: Organisateur = null;
+  organisateur: Organisateur = null;
+
+  nbEquipes: number = 2;
+  nbJoueurs: number = 4;
+
 }

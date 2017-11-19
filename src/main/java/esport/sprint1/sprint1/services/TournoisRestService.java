@@ -4,7 +4,12 @@ import esport.sprint1.sprint1.metier.LocalMetier;
 import esport.sprint1.sprint1.metier.TournoisMetier;
 import esport.sprint1.sprint1.models.Local;
 import esport.sprint1.sprint1.models.Tournois;
+import esport.sprint1.sprint1.models.TournoisEnEquipe;
+import esport.sprint1.sprint1.models.TournoisIndividuel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,5 +55,50 @@ public class TournoisRestService {
     @RequestMapping(value = "/tournois/{id}", method = RequestMethod.GET)
     public Tournois getTournois(@PathVariable Long id) {
         return tournoisMetier.getTournois(id);
+    }
+
+    @RequestMapping(value = "/tournois/chercher", method = RequestMethod.GET)
+    public Page<Tournois> chercherTournois(
+            @RequestParam(name = "mot", defaultValue = "") String mot,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        return tournoisMetier.chercherTournois("%" + mot + "%", new PageRequest(page, size));
+    }
+
+    @RequestMapping(value = "/tournois/{id}/publier", method = RequestMethod.PUT)
+    public Tournois publierTournois(@PathVariable Long id) {
+        Tournois tournois = tournoisMetier.getTournois(id);
+        tournois.setPublie(true);
+        return tournoisMetier.updateTournois(id, tournois);
+    }
+
+    @RequestMapping(value = "/tournois/{id}/nonpublier", method = RequestMethod.PUT)
+    public Tournois nonPublierTournois(@PathVariable Long id) {
+        Tournois tournois = tournoisMetier.getTournois(id);
+        tournois.setPublie(false);
+        return tournoisMetier.updateTournois(id, tournois);
+    }
+
+    @RequestMapping(value = "/tournois/{id}/publierHorsLigne", method =RequestMethod.PUT)
+    public Tournois publierTournoisHorsLigne(
+            @PathVariable Long idTournois,
+            @RequestBody Local local) {
+        return tournoisMetier.publierTournoisHorsLigne(idTournois, local);
+    }
+
+    @RequestMapping(value = "/tournois/individuels", method = RequestMethod.GET)
+    public Page<TournoisIndividuel> getAllTournoisIndividuel(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size
+    ) {
+        return tournoisMetier.getAllTournoisIndividuel(new PageRequest(page, size));
+    }
+
+    @RequestMapping(value = "/tournois/enEquipes", method = RequestMethod.GET)
+    public Page<TournoisEnEquipe> getAllTournoisEnEquipe(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size
+    ) {
+        return tournoisMetier.getAllTournoisEnEquipe(new PageRequest(page, size));
     }
 }

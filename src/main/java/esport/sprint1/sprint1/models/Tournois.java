@@ -23,9 +23,9 @@ public abstract class Tournois implements Serializable {
 
     private String titre;
     private String description;
-    private boolean publie;
+    private boolean publie = false;
     private double prix;
-    private String porte;
+    private boolean porte  = false;
 
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -51,7 +51,7 @@ public abstract class Tournois implements Serializable {
     public Tournois() {
     }
 
-    public Tournois(String titre, String description, boolean publie, double prix, String porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu) {
+    public Tournois(String titre, String description, boolean publie, double prix, boolean porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu) {
         this.titre = titre;
         this.description = description;
         this.publie = publie;
@@ -105,11 +105,11 @@ public abstract class Tournois implements Serializable {
         this.prix = prix;
     }
 
-    public String getPorte() {
+    public boolean isPorte() {
         return porte;
     }
 
-    public void setPorte(String porte) {
+    public void setPorte(boolean porte) {
         this.porte = porte;
     }
 
