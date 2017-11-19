@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TournoiService} from "../../services/tournoi.service";
 import {Tournoi} from "../../../models/Tournoi";
 
+import { AgmCoreModule} from "@agm/core";
+
 @Component({
   selector: 'app-publier-tournoi',
   templateUrl: './publier-tournoi.component.html',
@@ -32,6 +34,8 @@ export class PublierTournoiComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+
+    console.log(this.tournoi.enLigne)
   }
 
   mapClicked($event: any) {
@@ -41,6 +45,10 @@ export class PublierTournoiComponent implements OnInit {
 
     console.log(this.lat + " - " + this.lng)
 
+  }
+
+  publier(){
+    
   }
 
 }

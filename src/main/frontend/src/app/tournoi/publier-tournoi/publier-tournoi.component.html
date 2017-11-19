@@ -3,30 +3,24 @@
     <div class="panel-heading">Modifier Jeu</div>
     <div class="panel-body">
       <div>
-        <div class="form-group">
-          <label class="control-label">Affishe URL:</label>
-          <input type="text" class="form-control" [(ngModel)]="jeu.afficheUrl" />
-        </div>
 
         <div class="form-group">
           <label class="control-label">Type:</label>
-          <select class="form-control" [(ngModel)]="jeu.type">
-            <option [ngValue]="true" [selected]="jeu.type == true" >True</option>
-            <option [ngValue]="false" [selected]="jeu.type == false" >False</option>
+          <select class="form-control" ngModel name="enLigne">
+            <option value="true" selected>En Ligne</option>
+            <option value="false">Hors Ligne</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map>
+        <div *ngIf="enLigne != undefined">
+          <div *ngIf="enLigne == true">
+            <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+          </div>
         </div>
 
-        <button class="btn btn-primary" (click)="updateJeu()">Save</button>
-
-      </div>
-
-      <div *ngIf="mode==2">
+        <button class="btn btn-primary" (click)="publier()">Save</button>
 
       </div>
     </div>
