@@ -58,6 +58,7 @@ const appRouter: Routes = [
   {path: 'tournois', component: TournoiComponent},
   {path: 'edit-tournoi/:id', component: EditTournoiComponent},
   {path: 'new-tournoi', component: NewTournoiComponent},
+  {path: 'publier-tournoi/:id', component: PublierTournoiComponent},
 ];
 
 @NgModule({

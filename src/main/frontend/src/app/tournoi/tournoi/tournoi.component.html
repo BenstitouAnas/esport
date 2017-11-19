@@ -30,10 +30,9 @@
           <td>{{tournoi.id}}</td>
           <td>{{tournoi.titre}}</td>
           <td>{{tournoi.organisateur.nom}} {{tournoi.organisateur.prenom}}</td>
-          <th *ngIf="tournoi.publie === true"><ui-switch [checked]="true" (change)="nonPublierTournoi(tournoi.id)"></ui-switch>
-
-          </th>
-          <th *ngIf="tournoi.publie === false"><ui-switch [checked]="false" (change)="publierTournoi(tournoi.id)" data-toggle="modal" data-target="#exampleModal"></ui-switch></th>
+          <td *ngIf="tournoi.publie === true">---------</td>
+          <td *ngIf="tournoi.publie === false">
+            <a (click)="publierTournoi(tournoi.id)" class="clickable">Publier</a>
           <td>
             <a (click)="onEditTournoi(tournoi.id)" class="clickable">Edit</a>
           </td>

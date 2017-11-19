@@ -1,0 +1,34 @@
+<div class="container spacer">
+  <div class="panel panel-primary" *ngIf="mode==1">
+    <div class="panel-heading">Modifier Jeu</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">Affishe URL:</label>
+          <input type="text" class="form-control" [(ngModel)]="jeu.afficheUrl" />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Type:</label>
+          <select class="form-control" [(ngModel)]="jeu.type">
+            <option [ngValue]="true" [selected]="jeu.type == true" >True</option>
+            <option [ngValue]="false" [selected]="jeu.type == false" >False</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+
+        <button class="btn btn-primary" (click)="updateJeu()">Save</button>
+
+      </div>
+
+      <div *ngIf="mode==2">
+
+      </div>
+    </div>
+  </div>
+</div>
