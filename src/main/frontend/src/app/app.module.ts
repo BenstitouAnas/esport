@@ -39,6 +39,7 @@ import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { GoogleMapComponent } from './util/google-map/google-map.component';
 import {BsModalModule} from "ng2-bs3-modal";
+import { PublierTournoiComponent } from './tournoi/publier-tournoi/publier-tournoi.component';
 
 
 const appRouter: Routes = [
@@ -77,7 +78,8 @@ const appRouter: Routes = [
     TournoiComponent,
     EditTournoiComponent,
     NewTournoiComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    PublierTournoiComponent
   ],
   imports: [
     AngularMultiSelectModule,

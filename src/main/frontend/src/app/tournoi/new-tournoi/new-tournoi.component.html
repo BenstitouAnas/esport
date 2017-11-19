@@ -15,19 +15,19 @@
           <input #nom="ngModel" class="form-control" type="text" ngModel name="description" required>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="control-label">Publie:</label>
           <select class="form-control" ngModel name="publie" required>
             <option value="true" >True</option>
             <option value="false" selected>False</option>
           </select>
-        </div>
+        </div>-->
 
         <div class="form-group">
           <label class="control-label">Porte:</label>
           <select class="form-control" ngModel name="porte" required>
-            <option value="true" >True</option>
-            <option value="false">False</option>
+            <option [ngValue]="true" >True</option>
+            <option [ngValue]="false">False</option>
           </select>
         </div>
 
@@ -62,21 +62,13 @@
                                 [(ngModel)]="selectedJeu"  name="jeu"
                                 [settings]="jeuDropdownSettings"
                                 (onSelect)="onJeuSelect($event)"
-                                (onDeSelect)="OnJeuDeSelect($event)" required>
+                                (onDeSelect)="OnJeuDeSelect($event)" required (change)="handleSelectedValue()">
             <c-item>
               <ng-template let-item="item">
                 <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
               </ng-template>
             </c-item>
           </angular2-multiselect>
-        </div>
-
-        <div class="form-group" >
-          <label class="control-label">Type:</label>
-          <select class="form-control" ngModel name="type" required #t (change)="handleSelectedValue(t.value)">
-            <option value="indiv" >Individuel</option>
-            <option value="equipe" >En Equipe</option>
-          </select>
         </div>
 
         <div class="form-group" *ngIf="showHideNbJoueurs">

@@ -74,6 +74,10 @@ export class NewTournoiComponent implements OnInit {
    dataForm.console = this.console;
    dataForm.jeu = this.jeu;
    dataForm.organisateur = this.organisateur;
+   dataForm.publie = false;
+   dataForm.type = this.type;
+
+   console.log(dataForm);
 
     this.tournoiService.saveTournoi(dataForm)
       .subscribe(data => {
@@ -98,8 +102,21 @@ export class NewTournoiComponent implements OnInit {
     this.allJeuxConsoles = [];
   }
 
+
   onJeuSelect(jeu:Jeu) {
     this.jeu = this.allJeuxConsoles.find(c => c.id == jeu.id);
+
+    if(this.jeu.type == true){
+      this.type = "indiv";
+      this.showHideNbJoueurs = false;
+      this.showHideNbEquipe = true;
+    }
+
+    if(this.jeu.type == false){
+      this.type="equipe";
+      this.showHideNbEquipe = false;
+      this.showHideNbJoueurs = true;
+    }
   }
   OnJeuDeSelect(item: any) {
     //this.allJeuxConsoles = [];
@@ -112,21 +129,8 @@ export class NewTournoiComponent implements OnInit {
     //console.log(items);
   }
 
+  public type:string;
   public showHideNbEquipe:boolean = false;
   public showHideNbJoueurs:boolean = false;
-
-  handleSelectedValue(value) {
-    // Get and value and assign it to variable declared above
-    if(value == 'equipe'){
-      this.showHideNbJoueurs = false;
-      this.showHideNbEquipe = true;
-
-    }
-
-    if(value == 'indiv'){
-      this.showHideNbEquipe = false;
-      this.showHideNbJoueurs = true;
-    }
-  }
 
 }
