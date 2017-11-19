@@ -15,6 +15,11 @@ export class OrganisateurService {
     this._organisateursUrl = this._config.serverURL + "organisateurs/";
   }
 
+  getAllOrganisateurs(){
+    return this._http.get(this._organisateursUrl)
+      .map(resp => resp.json());
+  }
+
   getListOrganisateurs(page:number, size:number){
     return this._http.get(this._organisateursUrl + "chercher?size=" + size + "&page=" + page)
       .map(resp => resp.json());

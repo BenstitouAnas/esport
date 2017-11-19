@@ -51,4 +51,9 @@ export class ConsoleService {
       .map(resp => resp.json());
   }
 
+  getJeux(console:Console){
+    return this._http.get(this._consolesUrl + "/" + console.id + "/jeux")
+      .map(resp => resp.json());
+  }
+
 }

@@ -1,3 +1,111 @@
-<p>
-  new-tournoi works!
-</p>
+<div class="container spacer">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Nouveau Jeu</div>
+    <div class="panel-body">
+
+      <form #f="ngForm" (ngSubmit)="onSaveTournoi(f.value)">
+        <div class="form-group">
+          <label class="control-label">Titre:</label>
+          <input #nom="ngModel" class="form-control" type="text" ngModel name="titre" required>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Description:</label>
+          <input #nom="ngModel" class="form-control" type="text" ngModel name="description" required>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Publie:</label>
+          <select class="form-control" ngModel name="publie" required>
+            <option value="true" >True</option>
+            <option value="false" selected>False</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Porte:</label>
+          <select class="form-control" ngModel name="porte" required>
+            <option value="true" >True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Date Debut:</label>
+          <input #nom="ngModel" class="form-control" type="date" ngModel name="dateDebut" required>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Date Fin:</label>
+          <input #nom="ngModel" class="form-control" type="date" ngModel name="dateFin" required>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Console:</label>
+          <angular2-multiselect [data]="allConsoles"
+                                [(ngModel)]="selectedConsole"  name="console"
+                                [settings]="consoleDropdownSettings"
+                                (onSelect)="onConsoleSelect($event)"
+                                (onDeSelect)="OnConsoleDeSelect($event)" required>
+            <c-item>
+              <ng-template let-item="item">
+                <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
+              </ng-template>
+            </c-item>
+          </angular2-multiselect>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Jeu:</label>
+          <angular2-multiselect [data]="allJeuxConsoles"
+                                [(ngModel)]="selectedJeu"  name="jeu"
+                                [settings]="jeuDropdownSettings"
+                                (onSelect)="onJeuSelect($event)"
+                                (onDeSelect)="OnJeuDeSelect($event)" required>
+            <c-item>
+              <ng-template let-item="item">
+                <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
+              </ng-template>
+            </c-item>
+          </angular2-multiselect>
+        </div>
+
+        <div class="form-group" >
+          <label class="control-label">Type:</label>
+          <select class="form-control" ngModel name="type" required #t (change)="handleSelectedValue(t.value)">
+            <option value="indiv" >Individuel</option>
+            <option value="equipe" >En Equipe</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="showHideNbJoueurs">
+          <label class="control-label">Nombre des Joueurs:</label>
+          <select class="form-control" ngModel name="nbJoueurs" required>
+            <option value="4" >4</option>
+            <option value="6" >6</option>
+            <option value="8" >8</option>
+            <option value="10" >10</option>
+            <option value="12" >12</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="showHideNbEquipe">
+          <label class="control-label">Nombre des Equipes:</label>
+          <select class="form-control" ngModel name="nbEquipes" required>
+            <option value="2" >2</option>
+            <option value="4" >4</option>
+            <option value="6" >6</option>
+            <option value="10" >10</option>
+          </select>
+        </div>
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Enregistrer</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
