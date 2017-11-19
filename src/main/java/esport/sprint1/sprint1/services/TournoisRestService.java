@@ -41,13 +41,16 @@ public class TournoisRestService {
 
     @RequestMapping(value = "/tournois/{id}", method = RequestMethod.PUT)
     public Tournois updateTournois(@PathVariable Long id, @RequestBody Tournois tournois) {
-        Local l = new Local(tournois.getLocal().getLatitude(), tournois.getLocal().getLongitude());
-        boolean nvLocal = localMetier.isExistLocal(l.getLatitude(), l.getLongitude());
+        //Local l = new Local(tournois.getLocal().getLatitude(), tournois.getLocal().getLongitude());
+        //boolean nvLocal = localMetier.isExistLocal(l.getLatitude(), l.getLongitude());
 
-        if(nvLocal == false){
+        /*if(nvLocal == false){
             localMetier.saveLocal(l);
             tournois.setLocal(l);
-        }
+        }*/
+
+        Local l = localMetier.getLocal(1L);
+        tournois.setLocal(l);
 
         return tournoisMetier.updateTournois(id, tournois);
     }

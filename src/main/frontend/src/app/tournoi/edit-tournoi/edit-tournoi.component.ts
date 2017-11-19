@@ -33,6 +33,7 @@ export class EditTournoiComponent implements OnInit {
   }
 
   updateTournoi(){
+    console.log(this.tournoi);
     this.tournoiService.updateTournoi(this.tournoi)
       .subscribe(data => {
         swal(
