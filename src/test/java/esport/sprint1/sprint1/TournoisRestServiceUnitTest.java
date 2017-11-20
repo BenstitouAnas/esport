@@ -57,7 +57,7 @@ public class TournoisRestServiceUnitTest {
         Jeu J = new Jeu();
         J.setId(new Long(1));
         List<Tournois> users = Arrays.asList(
-                new Tournois("Tournoi","Tournoi de siecle",false, 100.5, false, new Date(), new Date(), L, O, C, J) {
+                new Tournois("Tournoi","Tournoi de siecle",false, 100.5, false, new Date(), new Date(), L, O, C, J,true) {
                 });
         when(tournoisMetier.listTOurnois()).thenReturn(users);
         mockMvc.perform(get("/tournois"))
