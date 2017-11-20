@@ -20,8 +20,8 @@ public class TournoisEnEquipe extends Tournois implements Serializable {
         this.test = test;
     }
 
-    public TournoisEnEquipe(String titre, String description, boolean publie, double prix, boolean porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu, int nbEquipes, String test) {
-        super(titre, description, publie, prix, porte, dateDebut, dateFin, local, organisateur, console, jeu);
+    public TournoisEnEquipe(String titre, String description, boolean publie, double prix, boolean porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu, boolean enHorsLigne, int nbEquipes, String test) {
+        super(titre, description, publie, prix, porte, dateDebut, dateFin, local, organisateur, console, jeu, enHorsLigne);
         this.nbEquipes = nbEquipes;
         this.test = test;
     }

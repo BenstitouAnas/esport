@@ -27,6 +27,8 @@ public abstract class Tournois implements Serializable {
     private double prix;
     private boolean porte  = false;
 
+    private boolean enLigne = true; // false:enLigne, true:horsLigne
+
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
     @Temporal(TemporalType.DATE)
@@ -51,7 +53,7 @@ public abstract class Tournois implements Serializable {
     public Tournois() {
     }
 
-    public Tournois(String titre, String description, boolean publie, double prix, boolean porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu) {
+    public Tournois(String titre, String description, boolean publie, double prix, boolean porte, Date dateDebut, Date dateFin, Local local, Organisateur organisateur, Console console, Jeu jeu, boolean enHorsLigne) {
         this.titre = titre;
         this.description = description;
         this.publie = publie;
@@ -63,6 +65,7 @@ public abstract class Tournois implements Serializable {
         this.organisateur = organisateur;
         this.console = console;
         this.jeu = jeu;
+        this.enLigne = enHorsLigne;
     }
 
     public Long getId() {
@@ -161,5 +164,11 @@ public abstract class Tournois implements Serializable {
         this.local = local;
     }
 
+    public boolean isEnHorsLigne() {
+        return enLigne;
+    }
 
+    public void setEnHorsLigne(boolean enHorsLigne) {
+        this.enLigne = enHorsLigne;
+    }
 }

@@ -20,4 +20,8 @@ export class Tournoi {
   nbEquipes: number = 2;
   nbJoueurs: number = 4;
 
+  type: string = "";
+
+  enLigne: boolean = true;
+
 }

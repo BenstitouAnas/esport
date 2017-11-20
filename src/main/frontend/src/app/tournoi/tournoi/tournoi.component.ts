@@ -26,6 +26,8 @@ export class TournoiComponent implements OnInit {
 
   pages:Array<number>;
 
+  tournoi:Tournoi = new Tournoi();
+
   constructor(
     public _http:Http,
     public tournoiService:TournoiService,
@@ -134,44 +136,33 @@ export class TournoiComponent implements OnInit {
   }
 
   publierTournoi(id:number){
-    this.openModal();
+    this.router.navigate(['publier-tournoi', id]);
 
-    /*this.router.navigate(['tournois']);
+    /*this.tournoiService.getTournoi(id)
+      .subscribe(data => {
+        this.tournoi = data;
+      }, err => {
+        console.log(err);
+      });
+*/
+    /*if(this.tournoi.local.id == 1){
 
-    swal({
-      title: '',
-      html:
-      '<app-google-map></app-google-map>',
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<i class="fa fa-thumbs-down">Non</i>',
-      cancelButtonAriaLabel: 'Thumbs down',
-    });*/
+    }
 
-    this.tournoiService.publierTournoi(id)
+    if(this.tournoi.local.id != 1){
+      swal(
+        'Oops...',
+        'Tournoi deja Publiee !',
+        'error'
+      )
+    }
+
+    /*this.tournoiService.publierTournoi(id)
       .subscribe(data => {
         this.ngOnInit();
       }, err => {
         console.log(err);
-      });
-
-    /*swal({
-      title: 'Publier Tournoi !',
-      text: 'Patientez s\'il vous plaît',
-      timer: 2000,
-      onOpen: function () {
-        swal.showLoading()
-      }
-    }).then(()=> this.tournoiService.publierTournoi(id)).then(function (result) {
-      if (result.dismiss === 'timer') {
-        console.log('I was closed by the timer')
-      }
-    })*/
+      });*/
   }
 
 }
