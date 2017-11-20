@@ -25,7 +25,10 @@ public class TournoisMetierImpl implements TournoisMetier {
     public List<Tournois> listTOurnois() {
         return tournoisRepository.findAll();
     }
-
+    @Override
+    public boolean exists(Tournois T) {
+        return getTournois(T.getId()) != null;
+    }
     @Override
     public boolean deleteTournois(Long id) {
         tournoisRepository.delete(id);
