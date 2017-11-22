@@ -40,9 +40,55 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { GoogleMapComponent } from './util/google-map/google-map.component';
 import {BsModalModule} from "ng2-bs3-modal";
 import { PublierTournoiComponent } from './tournoi/publier-tournoi/publier-tournoi.component';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
+import { DashboardComponent }   from './dashboard/dashboard.component';
+import { UserComponent }   from './user/user.component';
+import { TableComponent }   from './table/table.component';
+import { TypographyComponent }   from './typography/typography.component';
+import { IconsComponent }   from './icons/icons.component';
+import { NotificationsComponent }   from './notifications/notifications.component';
+import { UpgradeComponent }   from './upgrade/upgrade.component';
 
 
 const appRouter: Routes = [
+
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
+  },
+  {
+    path: 'table',
+    component: TableComponent
+  },
+  {
+    path: 'typography',
+    component: TypographyComponent
+  },
+  {
+    path: 'icons',
+    component: IconsComponent
+  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent
+  },
+  {
+    path: 'upgrade',
+    component: UpgradeComponent
+  },
+
   {path: 'consoles', component: ConsoleComponent},
   {path: 'edit-console/:id', component: EditConsoleComponent},
   {path: 'new-console', component: NewConsoleComponent},
@@ -55,6 +101,7 @@ const appRouter: Routes = [
   {path: 'edit-ville/:id', component: EditVilleComponent},
   {path: 'new-ville', component: NewVilleComponent},
 
+  {path: 'new-ville', component: NewVilleComponent},
   {path: 'tournois', component: TournoiComponent},
   {path: 'edit-tournoi/:id', component: EditTournoiComponent},
   {path: 'new-tournoi', component: NewTournoiComponent},
@@ -80,7 +127,14 @@ const appRouter: Routes = [
     EditTournoiComponent,
     NewTournoiComponent,
     GoogleMapComponent,
-    PublierTournoiComponent
+    PublierTournoiComponent,
+    DashboardComponent,
+    UserComponent,
+    TableComponent,
+    TypographyComponent,
+    IconsComponent,
+    NotificationsComponent,
+    UpgradeComponent
   ],
   imports: [
     AngularMultiSelectModule,
@@ -90,6 +144,10 @@ const appRouter: Routes = [
     FormsModule,
     UiSwitchModule,
     CommonModule,
+    SidebarModule,
+    NavbarModule,
+    FooterModule,
+    FixedPluginModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBhPDxeKaJmieOUn7oniGrD9tFKAC4yOsg'
     }),

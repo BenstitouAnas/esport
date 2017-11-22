@@ -49,7 +49,7 @@ public class TournoisRestService {
             tournois.setLocal(l);
         }*/
 
-        Local l = localMetier.getLocal(1L);
+     Local l = localMetier.getLocal(1L);
         tournois.setLocal(l);
 
         return tournoisMetier.updateTournois(id, tournois);

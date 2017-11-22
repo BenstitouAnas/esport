@@ -15,7 +15,7 @@ public interface TournoisMetier {
     boolean deleteTournois(Long id);
     Tournois updateTournois(Long id, Tournois tournois);
     Tournois getTournois(Long id);
-
+    boolean exists(Tournois T);
     Page<Tournois> chercherTournois(String mot, Pageable pageable);
 
     Tournois publierTournois(Long id);
