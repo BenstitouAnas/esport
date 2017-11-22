@@ -164,11 +164,11 @@ public abstract class Tournois implements Serializable {
         this.local = local;
     }
 
-    public boolean isEnHorsLigne() {
+    public boolean isEnLigne() {
         return enLigne;
     }
 
-    public void setEnHorsLigne(boolean enHorsLigne) {
-        this.enLigne = enHorsLigne;
+    public void setEnLigne(boolean enLigne) {
+        this.enLigne = enLigne;
     }
 }

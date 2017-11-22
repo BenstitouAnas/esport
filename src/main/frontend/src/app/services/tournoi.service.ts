@@ -45,8 +45,8 @@ export class TournoiService {
       .map(resp => resp.json());
   }
 
-  publierTournoi(id:number){
-    return this._http.put(this._tournoisUrl + id + "/publier", null)
+  publierTournoi(id:number, lat:number, lng:number){
+    return this._http.put(this._tournoisUrl + id + "/publier?lat=" + lat + "&lng=" + lng, null)
       .map(resp => resp.json());
   }
 

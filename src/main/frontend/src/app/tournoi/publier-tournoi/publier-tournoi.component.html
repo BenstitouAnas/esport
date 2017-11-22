@@ -1,23 +1,27 @@
 <div class="container spacer">
-  <div class="panel panel-primary" *ngIf="mode==1">
+  <div class="panel panel-primary">
     <div class="panel-heading">Modifier Jeu</div>
     <div class="panel-body">
       <div>
 
         <div class="form-group">
           <label class="control-label">Type:</label>
-          <select class="form-control" ngModel name="enLigne">
-            <option value="true" selected>En Ligne</option>
-            <option value="false">Hors Ligne</option>
+          <select class="form-control" [(ngModel)]="TypeTournoi">
+            <option [ngValue]="true" selected>En Ligne</option>
+            <option [ngValue]="false">Hors Ligne</option>
           </select>
         </div>
 
-        <div *ngIf="enLigne != undefined">
-          <div *ngIf="enLigne == true">
+        <div *ngIf="TypeTournoi != undefined">
+          <div *ngIf="TypeTournoi == false">
             <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
               <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
             </agm-map>
           </div>
+        </div>
+
+        <div *ngIf="afficheMap == true">
+          Tournois En Ligne
         </div>
 
         <button class="btn btn-primary" (click)="publier()">Save</button>

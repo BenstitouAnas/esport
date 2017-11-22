@@ -15,10 +15,12 @@ export class PublierTournoiComponent implements OnInit {
 
   idTournoi:number;
   tournoi: Tournoi = new Tournoi();
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 33.706395;
+  lng: number = -7.353508;
 
-  enLigne:boolean = true;
+  TypeTournoi = false;
+
+  enLigne:boolean ;
 
   constructor(public activatedRoute:ActivatedRoute,
               public router:Router,
@@ -34,21 +36,21 @@ export class PublierTournoiComponent implements OnInit {
       }, err => {
         console.log(err);
       });
-
-    console.log(this.tournoi.enLigne)
   }
 
   mapClicked($event: any) {
-
     this.lat = $event.coords.lat
     this.lng = $event.coords.lng
-
-    console.log(this.lat + " - " + this.lng)
-
   }
 
   publier(){
-    
+
+    this.tournoiService.publierTournoi(this.idTournoi, this.lat, this.lng)
+      .subscribe(data =>{
+        console.log(this.TypeTournoi + ":" + this.lat + " - " + this.lng)
+      }, err => {
+        console.log(err);
+      });
   }
 
 }
