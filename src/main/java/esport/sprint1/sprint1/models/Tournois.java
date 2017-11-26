@@ -42,6 +42,14 @@ public abstract class Tournois implements Serializable {
     @OneToMany(mappedBy = "tournoi")
     private List<Rounds> Round;
 
+    public List<Rounds> getRound() {
+        return Round;
+    }
+
+    public void setRound(List<Rounds> round) {
+        Round = round;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORGANISATEUR_ID")
     private Organisateur organisateur;

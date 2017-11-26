@@ -1,17 +1,16 @@
 package esport.sprint1.sprint1.services;
 
 import esport.sprint1.sprint1.metier.LocalMetier;
+import esport.sprint1.sprint1.metier.RoundsMetier;
 import esport.sprint1.sprint1.metier.TournoisMetier;
-import esport.sprint1.sprint1.models.Local;
-import esport.sprint1.sprint1.models.Tournois;
-import esport.sprint1.sprint1.models.TournoisEnEquipe;
-import esport.sprint1.sprint1.models.TournoisIndividuel;
+import esport.sprint1.sprint1.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +22,9 @@ public class TournoisRestService {
 
     @Autowired
     private LocalMetier localMetier;
+
+    @Autowired
+    private RoundsMetier roundsMetier;
 
     @RequestMapping(value = "/tournois", method = RequestMethod.POST)
     public Tournois saveTournois(@RequestBody Tournois tournois) {
@@ -67,7 +69,26 @@ public class TournoisRestService {
             @RequestParam(name = "size", defaultValue = "5") int size) {
         return tournoisMetier.chercherTournois("%" + mot + "%", new PageRequest(page, size));
     }
+    @RequestMapping(value = "/tournois/{id}/generer", method = RequestMethod.POST)
+    public Tournois publierTournois(
+            @PathVariable Long id)
+    {
+        Tournois tournois = tournoisMetier.getTournois(id);
+        Rounds R = new Rounds();
+        ArrayList<Long> T = new ArrayList<Long>();
+        for(int i = 0; i < 16;i++)
+        {
+            T.add(Long.parseLong(i+""));
+        }
+        R.setTournoi(tournois);
+       R.StartToornament(T);
+        roundsMetier.saveRound(R);
+        ArrayList<Rounds> Rnd = new ArrayList<Rounds>();
+        Rnd.add(R);
+        tournois.setRound(Rnd);
+        return tournois;
 
+    }
     @RequestMapping(value = "/tournois/{id}/publier", method = RequestMethod.PUT)
     public Tournois publierTournois(
             @PathVariable Long id,

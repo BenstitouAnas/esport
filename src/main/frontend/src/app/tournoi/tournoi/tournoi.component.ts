@@ -134,7 +134,13 @@ export class TournoiComponent implements OnInit {
         console.log(err);
       });
   }
-
+  genererTournoi(id:number){
+    this.tournoiService.genererTournoi(id)
+      .subscribe(data =>{
+      }, err => {
+        console.log(err);
+      });
+  }
   publierTournoi(id:number){
     this.router.navigate(['publier-tournoi', id]);
 
