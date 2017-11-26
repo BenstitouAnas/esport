@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -37,6 +38,9 @@ public abstract class Tournois implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="LOCAL_ID")
     private Local local;
+
+    @OneToMany(mappedBy = "tournoi")
+    private List<Rounds> Round;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORGANISATEUR_ID")
