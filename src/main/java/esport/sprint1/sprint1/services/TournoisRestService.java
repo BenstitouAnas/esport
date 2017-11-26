@@ -69,10 +69,26 @@ public class TournoisRestService {
     }
 
     @RequestMapping(value = "/tournois/{id}/publier", method = RequestMethod.PUT)
-    public Tournois publierTournois(@PathVariable Long id) {
+    public Tournois publierTournois(
+            @PathVariable Long id,
+            @RequestParam(name = "lat", defaultValue = "33.706395") double lat,
+            @RequestParam(name = "lng", defaultValue = "-7.353508") double lng) {
         Tournois tournois = tournoisMetier.getTournois(id);
         tournois.setPublie(true);
-        return tournoisMetier.updateTournois(id, tournois);
+
+        if(tournois.isEnLigne() == true){
+            return tournoisMetier.updateTournois(id, tournois);
+        }else{
+            Local l = new Local(lat, lng);
+            boolean nvLocal = localMetier.isExistLocal(l.getLatitude(), l.getLongitude());
+
+            if(nvLocal == true){
+                localMetier.saveLocal(l);
+            }
+            tournois.setLocal(l);
+            return tournoisMetier.updateTournois(id, tournois);
+        }
+
     }
 
     @RequestMapping(value = "/tournois/{id}/nonpublier", method = RequestMethod.PUT)
