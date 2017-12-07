@@ -22,7 +22,8 @@ public class Rounds {
 	@JoinColumn(name="TOURNOI_ID")
 	private Tournois tournoi;
 	private Long theLuckyGuy;
-	private ArrayList<Long> playersCurrentTurn;
+	@ElementCollection(fetch=FetchType.LAZY)
+	private List<Long> playersCurrentTurn;
 	public Rounds(){
 
 	}
@@ -65,7 +66,7 @@ public class Rounds {
 		this.theLuckyGuy = theLuckyGuy;
 	}
 
-	public ArrayList<Long> getPlayersCurrentTurn() {
+	public List<Long> getPlayersCurrentTurn() {
 		return playersCurrentTurn;
 	}
 
@@ -91,6 +92,7 @@ public class Rounds {
 			match = new Matches();
 			match.createMatch(this.playersCurrentTurn.get(i),
 					this.playersCurrentTurn.get(i + 1));
+			match.setRound(this);
 			this.m_Matches.add(match);
 		}
 

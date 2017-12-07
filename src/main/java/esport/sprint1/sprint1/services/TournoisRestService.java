@@ -1,6 +1,7 @@
 package esport.sprint1.sprint1.services;
 
 import esport.sprint1.sprint1.metier.LocalMetier;
+import esport.sprint1.sprint1.metier.MatchesMetier;
 import esport.sprint1.sprint1.metier.RoundsMetier;
 import esport.sprint1.sprint1.metier.TournoisMetier;
 import esport.sprint1.sprint1.models.*;
@@ -26,8 +27,12 @@ public class TournoisRestService {
     @Autowired
     private RoundsMetier roundsMetier;
 
+    @Autowired
+    private MatchesMetier matchesMetier;
+
     @RequestMapping(value = "/tournois", method = RequestMethod.POST)
     public Tournois saveTournois(@RequestBody Tournois tournois) {
+     //   System.out.print(tournois.);
         return tournoisMetier.saveTournois(tournois);
     }
 
@@ -73,10 +78,20 @@ public class TournoisRestService {
     public Tournois publierTournois(
             @PathVariable Long id)
     {
+        int a = 0;
         Tournois tournois = tournoisMetier.getTournois(id);
+        if(tournois instanceof TournoisIndividuel){
+            a = ((TournoisIndividuel) tournois).getNbJoueurs();
+
+        }else
+       {
+           a =  ((TournoisEnEquipe) tournois).getNbEquipes();
+
+        }
+
         Rounds R = new Rounds();
         ArrayList<Long> T = new ArrayList<Long>();
-        for(int i = 0; i < 16;i++)
+        for(int i = 0; i < a;i++)
         {
             T.add(Long.parseLong(i+""));
         }
@@ -85,6 +100,7 @@ public class TournoisRestService {
         roundsMetier.saveRound(R);
         ArrayList<Rounds> Rnd = new ArrayList<Rounds>();
         Rnd.add(R);
+        matchesMetier.saveMatches(new ArrayList<>(R.getM_Matches()));
         tournois.setRound(Rnd);
         return tournois;
 

@@ -22,6 +22,7 @@
         "styles.css", "../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [          "../node_modules/jquery/dist/jquery.js",
+        "../src/assets/brackets.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "../node_modules/arrive/src/arrive.js",
         "../node_modules/moment/moment.js",

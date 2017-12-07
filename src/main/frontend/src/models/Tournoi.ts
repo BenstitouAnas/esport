@@ -1,4 +1,5 @@
 import { Jeu } from './Jeu';
+import { Rounds } from './Rounds';
 import { Organisateur } from './Organisateur';
 import { Console } from './Console';
 import { Local } from './Local';
@@ -15,6 +16,7 @@ export class Tournoi {
   local: Local = null;
   console: Console = null
   jeu: Jeu = null;
+  Round: Array<Rounds> = new Array();
   organisateur: Organisateur = null;
 
   nbEquipes: number = 2;

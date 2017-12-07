@@ -68,6 +68,10 @@ export class TournoiComponent implements OnInit {
   onEditTournoi(id:number){
     this.router.navigate(['edit-tournoi', id]);
   }
+  onDetailTournoi(id:number){
+    this.router.navigate(['detail-tournoi', id]);
+  }
+
 
   onDeleteTournoi(tournoi:Tournoi){
 

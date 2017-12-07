@@ -34,9 +34,13 @@
           <td *ngIf="tournoi.publie === true">---------</td>
           <td *ngIf="tournoi.publie === false">
             <a (click)="publierTournoi(tournoi.id)" class="clickable">Publier</a>
-          <td>
+          </td>
           <td>
             <a (click)="genererTournoi(tournoi.id)" class="clickable">Générer</a>
+          </td>
+          <td>
+            <a (click)="onDetailTournoi(tournoi.id)" class="clickable">Détailler</a>
+          </td>
           <td>
             <a (click)="onEditTournoi(tournoi.id)" class="clickable">Edit</a>
           </td>

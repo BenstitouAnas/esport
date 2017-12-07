@@ -2,6 +2,8 @@ package esport.sprint1.sprint1.metier;
 
 import esport.sprint1.sprint1.models.Matches;
 
+import java.util.ArrayList;
+
 public interface MatchesMetier {
-    Matches saveMatches(Matches M);
+    void saveMatches(ArrayList<Matches> M);
 }

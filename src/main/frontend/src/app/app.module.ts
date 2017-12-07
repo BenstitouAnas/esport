@@ -19,6 +19,7 @@ import { JeuComponent } from './jeu/jeu.component';
 import { EditJeuComponent } from './jeu/edit-jeu/edit-jeu.component';
 import { NewJeuComponent } from './jeu/new-jeu/new-jeu.component';
 import { JeuService } from "./services/jeu.service";
+
 import { OrganisateurComponent } from './utilisateur/organisateur/organisateur/organisateur.component';
 import { EditOrganisateurComponent } from './utilisateur/organisateur/edit-organisateur/edit-organisateur.component';
 import { NewOrganisateurComponent } from './utilisateur/organisateur/new-organisateur/new-organisateur.component';
@@ -27,6 +28,7 @@ import { EditVilleComponent } from './ville/edit-ville/edit-ville.component';
 import { NewVilleComponent } from './ville/new-ville/new-ville.component';
 import { VilleService } from "./services/ville.service";
 import { OrganisateurService } from "./services/organisateur.service";
+import { DetailTournoiComponent } from './tournoi/detail-tournoi/detail-tournoi.component';
 import { TournoiComponent } from './tournoi/tournoi/tournoi.component';
 import { EditTournoiComponent } from './tournoi/edit-tournoi/edit-tournoi.component';
 import { NewTournoiComponent } from './tournoi/new-tournoi/new-tournoi.component';
@@ -106,6 +108,9 @@ const appRouter: Routes = [
   {path: 'edit-tournoi/:id', component: EditTournoiComponent},
   {path: 'new-tournoi', component: NewTournoiComponent},
   {path: 'publier-tournoi/:id', component: PublierTournoiComponent},
+  {path: 'detail-tournoi/:id', component: DetailTournoiComponent},
+
+  {path: 'user/:id', component: UserComponent}
 ];
 
 @NgModule({
@@ -133,6 +138,7 @@ const appRouter: Routes = [
     TableComponent,
     TypographyComponent,
     IconsComponent,
+    DetailTournoiComponent,
     NotificationsComponent,
     UpgradeComponent
   ],

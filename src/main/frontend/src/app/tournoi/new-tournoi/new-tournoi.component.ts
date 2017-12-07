@@ -108,14 +108,14 @@ export class NewTournoiComponent implements OnInit {
 
     if(this.jeu.type == true){
       this.type = "indiv";
-      this.showHideNbJoueurs = false;
-      this.showHideNbEquipe = true;
+      this.showHideNbJoueurs = true;
+      this.showHideNbEquipe = false;
     }
-
+  else
     if(this.jeu.type == false){
       this.type="equipe";
-      this.showHideNbEquipe = false;
-      this.showHideNbJoueurs = true;
+      this.showHideNbEquipe = true;
+      this.showHideNbJoueurs = false;
     }
   }
   OnJeuDeSelect(item: any) {

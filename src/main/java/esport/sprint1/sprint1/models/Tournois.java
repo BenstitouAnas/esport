@@ -1,5 +1,7 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -41,11 +43,11 @@ public abstract class Tournois implements Serializable {
 
     @OneToMany(mappedBy = "tournoi")
     private List<Rounds> Round;
-
+    @JsonIgnore
     public List<Rounds> getRound() {
         return Round;
     }
-
+    @JsonSetter
     public void setRound(List<Rounds> round) {
         Round = round;
     }
