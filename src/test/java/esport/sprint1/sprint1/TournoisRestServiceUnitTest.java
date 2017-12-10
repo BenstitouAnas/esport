@@ -105,8 +105,6 @@ public class TournoisRestServiceUnitTest {
         T.setJeu(J);
         T.setLocal(L);
         T.setOrganisateur(O);
-
-        when(tournoisMetier.exists(T)).thenReturn(false);
         when(tournoisMetier.saveTournois(T)).thenReturn(T);
         mockMvc.perform(
                 post("/tournois")

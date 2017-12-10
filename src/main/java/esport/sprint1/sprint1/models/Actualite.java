@@ -43,7 +43,9 @@ public class Actualite implements Serializable {
         Date_Ecriture = date_Ecriture;
         this.m_Writer = m_Writer;
     }
+    public Actualite(){
 
+    }
     public Date getDate_Ecriture() {
         return Date_Ecriture;
     }
