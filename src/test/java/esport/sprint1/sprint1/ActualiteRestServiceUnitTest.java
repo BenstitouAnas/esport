@@ -74,6 +74,27 @@ public class ActualiteRestServiceUnitTest {
                         .content(asJsonString(Act)))
                 .andExpect(status().isOk());
     }
+    @Test
+    public void test_update_actualite_success() throws Exception {
+        Ville V = new Ville("Casablanca");
+        V.setId(new Long(1));
+        Journaliste O = new Journaliste();
+        O.setId(new Long(1));
+        O.setNom("Test");
+        O.setVilleId(new Long(1));
+        Jeu J = new Jeu();
+        J.setId(new Long(1));
+        Actualite T = new Actualite();
+        T.setId(new Long(1));
+        when(actualiteMetier.getActualite(T.getId())).thenReturn(T);
+        when(actualiteMetier.updateActualite(T.getId(),T)).thenReturn(T);
+        mockMvc.perform(
+                put("/actualites/{id}", T.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(T)))
+                .andExpect(status().isOk());
+    }
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

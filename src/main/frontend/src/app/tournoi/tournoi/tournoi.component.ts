@@ -10,6 +10,8 @@ import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import {BsModalComponent} from "ng2-bs3-modal";
 
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-tournoi',
@@ -45,7 +47,17 @@ export class TournoiComponent implements OnInit {
         console.log(err);
       })
   }
-
+  mouseEnter(A){
+    console.log(A);
+    $('.thumbnail').hover(
+      function(){
+        $(this).find('.caption').slideDown(250); //.fadeIn(250)
+      },
+      function(){
+        $(this).find('.caption').slideUp(250); //.fadeOut(205)
+      }
+    );
+  }
   doSearch(){
     this.tournoiService.getTournois(this.mot, this.currentPage, this.size)
       .subscribe(data => {
@@ -139,6 +151,33 @@ export class TournoiComponent implements OnInit {
       });
   }
   genererTournoi(id:number){
+
+    swal({
+      title: 'Etes vous sur ?',
+      text: 'Voulez vous générer les matches ?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, générer',
+      cancelButtonText: 'Non, pas encore'
+    }).then(()=> this.generate(id)).then(function(){
+      swal(
+        'généré',
+        'Vos matches ont été générés',
+        'success'
+      )
+    }, function(dismiss) {
+      // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      if (dismiss === 'cancel') {
+        swal(
+          'Annulé',
+          'Vos matches n\'ont pas encore été générés',
+          'error'
+        )
+      }
+    });
+
+  }
+  generate(id:number){
     this.tournoiService.genererTournoi(id)
       .subscribe(data =>{
       }, err => {

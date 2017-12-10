@@ -1,4 +1,4 @@
-<div class="container spacer">
+<!--<div class="container spacer">
   <div class="panel panel-primary">
     <div class="panel-heading">Liste Tournois</div>
     <div class="panel-body">
@@ -55,5 +55,33 @@
         </ul>
       </div>
     </div>
+  </div>
+</div>
+-->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-3" *ngFor="let tournoi of pageTournois?.content">
+      <div (mouseenter)="mouseEnter('div a')"  class="thumbnail">
+        <div class="caption">
+          <h4>{{tournoi.titre}}</h4>
+          <p>{{tournoi.organisateur.nom}} {{tournoi.organisateur.prenom}}</p>
+          <p *ngIf="tournoi.publie === false" ><a (click)="publierTournoi(tournoi.id)" class="label label-success">Publier</a>
+          </p>
+          <p *ngIf="tournoi.publie === true" ><a (click)="genererTournoi(tournoi.id)" class="label label-success">Générer</a>
+          </p>
+          <p><a (click)="onEditTournoi(tournoi.id)" class="label label-info">Modifier</a>
+            <a (click)="onDeleteTournoi(tournoi.id)" class="label label-danger">Supprimer</a>
+          </p>
+        </div>
+        <img src="{{tournoi.jeu.afficheUrl}}" alt="...">
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages; let i=index"><a class="clickable" (click)="goToPage(i)">{{i+1}}</a></li>
+    </ul>
   </div>
 </div>
