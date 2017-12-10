@@ -82,11 +82,6 @@ public class Rounds {
 			this.theLuckyGuy = null;
 			Collections.shuffle(this.playersCurrentTurn);
 		}
-		if ((this.playersCurrentTurn.size() % 2) != 0) {
-			Collections.shuffle(this.playersCurrentTurn);
-			this.theLuckyGuy = this.playersCurrentTurn.get(0);
-			this.playersCurrentTurn.remove(0);
-		}
 		this.m_Matches = new ArrayList<>();
 		for (int i = 0; i < this.playersCurrentTurn.size(); i += 2) {
 			match = new Matches();

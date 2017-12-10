@@ -75,7 +75,7 @@ public class TournoisRestService {
         return tournoisMetier.chercherTournois("%" + mot + "%", new PageRequest(page, size));
     }
     @RequestMapping(value = "/tournois/{id}/generer", method = RequestMethod.POST)
-    public Tournois publierTournois(
+    public Tournois genererTournoi(
             @PathVariable Long id)
     {
         int a = 0;
