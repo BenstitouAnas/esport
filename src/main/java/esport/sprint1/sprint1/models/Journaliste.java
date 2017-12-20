@@ -10,6 +10,7 @@ import java.util.List;
 public class Journaliste extends Utilisateur implements Serializable {
     @OneToMany(mappedBy = "m_Writer")
     private List<Actualite> m_Acts;
+
     public List<Actualite> getM_Acts() {
         return m_Acts;
     }

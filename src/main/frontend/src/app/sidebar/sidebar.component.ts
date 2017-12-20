@@ -10,14 +10,14 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'tournois', title: 'Tournois',  icon: 'ti-panel', class: '' },
-    { path: 'user/1', title: 'User Profile',  icon:'ti-user', class: '' },
-    { path: 'table', title: 'Table List',  icon:'ti-view-list-alt', class: '' },
-    { path: 'typography', title: 'Typography',  icon:'ti-text', class: '' },
-    { path: 'icons', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
-    { path: 'maps', title: 'Maps',  icon:'ti-map', class: '' },
-    { path: 'notifications', title: 'Notifications',  icon:'ti-bell', class: '' },
-    { path: 'upgrade', title: 'Upgrade to PRO',  icon:'ti-export', class: 'active-pro' },
+    { path: 'tournois', title: 'Tournois',  icon: 'ti-cup', class: '' },
+    { path: 'user/1', title: 'Profile',  icon:'ti-user', class: '' },
+    { path: 'consoles', title: 'Consoles',  icon:'ti-view-list-alt', class: '' },
+    { path: 'jeux', title: 'Jeux',  icon:'ti-game', class: '' },
+    { path: 'jeux', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
+    { path: 'journalistes', title: 'Journalistes',  icon:'ti-sharethis', class: '' },
+    { path: 'actualites', title: 'Actualites',  icon:'ti-facebook', class: '' },
+    { path: '', title: 'Deconnexion',  icon:'ti-export', class: 'active-pro' },
 ];
 
 @Component({

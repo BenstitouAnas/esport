@@ -19,26 +19,24 @@
                 <option [value]="20">20</option>
               </select>
             </span>
-            <button class="btn btn-default" routerLink="/new-console">Ajouter Jeu</button>
+            <button class="btn btn-default" routerLink="/new-journalistes">Ajouter Journaliste</button>
           </div>
 
           <table class="table table-striped">
             <tr>
               <th>ID</th>
               <th>Nom</th>
-              <th>Type</th>
               <th></th>
               <th></th>
             </tr>
-            <tr *ngFor="let jeu of pageJeux?.content">
-              <td>{{jeu.id}}</td>
-              <td>{{jeu.nom}}</td>
-              <td>{{jeu.type}}</td>
+            <tr *ngFor="let journaliste of pageJournalistes?.content">
+              <td>{{journaliste.nom}}</td>
+              <td>{{journaliste.prenom}}</td>
               <td>
-                <a (click)="onEditJeu(jeu.id)" class="clickable">Edit</a>
+                <a (click)="onEditJournaliste(journaliste.id)" class="clickable">Edit</a>
               </td>
               <td>
-                <a (click)="onDeleteJeu(jeu)" class="clickable">Delete</a>
+                <a (click)="onDeleteJournaliste(journaliste)" class="clickable">Delete</a>
               </td>
             </tr>
           </table>
@@ -54,3 +52,4 @@
     </div>
   </div>
 </div>
+
