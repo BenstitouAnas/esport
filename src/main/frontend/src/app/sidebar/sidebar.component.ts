@@ -14,10 +14,10 @@ export const ROUTES: RouteInfo[] = [
     { path: 'user/1', title: 'Profile',  icon:'ti-user', class: '' },
     { path: 'consoles', title: 'Consoles',  icon:'ti-view-list-alt', class: '' },
     { path: 'jeux', title: 'Jeux',  icon:'ti-game', class: '' },
-    { path: 'jeux', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
+    //{ path: 'jeux', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
     { path: 'journalistes', title: 'Journalistes',  icon:'ti-sharethis', class: '' },
     { path: 'actualites', title: 'Actualites',  icon:'ti-facebook', class: '' },
-    { path: '', title: 'Deconnexion',  icon:'ti-export', class: 'active-pro' },
+    //{ path: '', title: 'Deconnexion',  icon:'ti-export', class: 'active-pro' },
 ];
 
 @Component({
