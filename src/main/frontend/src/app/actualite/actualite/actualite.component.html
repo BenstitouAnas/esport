@@ -72,10 +72,10 @@
           <p *ngIf="tournoi.publie === true" ><a (click)="genererTournoi(tournoi.id)" class="label label-success">Générer</a>
           </p>
           <p><a (click)="onEditTournoi(tournoi.id)" class="label label-info">Modifier</a>
-            <a (click)="onDeleteTournoi(tournoi)" class="label label-danger">Supprimer</a>
+            <a (click)="onDeleteTournoi(tournoi.id)" class="label label-danger">Supprimer</a>
           </p>
         </div>
-        <img class="affiche "src="{{tournoi.jeu.afficheUrl}}" alt="...">
+        <img src="{{tournoi.jeu.afficheUrl}}" alt="...">
       </div>
     </div>
   </div>

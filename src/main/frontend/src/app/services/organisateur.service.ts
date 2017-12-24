@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
-import {Config} from "../../models/Config";
-import { Organisateur } from "../../models/Organisateur";
+import {Http} from '@angular/http';
+import {Config} from '../../models/Config';
+import { Organisateur } from '../../models/Organisateur';
 
 @Injectable()
 export class OrganisateurService {

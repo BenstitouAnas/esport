@@ -14,12 +14,12 @@ declare var jquery:any;
 declare var $ :any;
 
 @Component({
-  selector: 'app-tournoi',
-  templateUrl: './tournoi.component.html',
-  styleUrls: ['./tournoi.component.css'],
+  selector: 'app-actualite',
+  templateUrl: './actualite.component.html',
+  styleUrls: ['./actualite.component.css'],
 
 })
-export class TournoiComponent implements OnInit {
+export class ActualiteComponent implements OnInit {
 
   pageTournois:any;
   mot:string="";
@@ -86,7 +86,7 @@ export class TournoiComponent implements OnInit {
 
 
   onDeleteTournoi(tournoi:Tournoi){
-    console.log(tournoi.id);
+
     swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this imaginary file!',

@@ -1,51 +1,68 @@
-<div class="container spacer">
-
-  <div class="panel panel-default">
-    <div class="panel-heading">Nouveau Jeu</div>
-    <div class="panel-body">
-
-      <form #f="ngForm" (ngSubmit)="onSaveJeu(f.value)">
-        <div class="form-group">
-          <label class="control-label">Nom:</label>
-          <input #nom="ngModel" class="form-control" type="text" ngModel name="nom" required>
+<div class="col-lg-12">
+  <div class="card">
+    <form #f="ngForm" (ngSubmit)="onSaveJeu(f.value)">
+      <div class="header">
+        <h4 class="title">Nouveau Jeu</h4>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">Nom:</label>
+              <input #nom="ngModel" class="form-control" type="text" ngModel name="nom" required>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label class="control-label">Affiche URL:</label>
-          <input #nom="ngModel" class="form-control" type="text" ngModel name="afficheUrl" required>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">Affiche URL:</label>
+              <input #nom="ngModel" class="form-control" type="text" ngModel name="afficheUrl" required>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label class="control-label">Type:</label>
-            <select class="form-control" ngModel name="type" required>
-              <option [ngValue]="true" >Individuel</option>
-              <option [ngValue]="false" >En équipe</option>
-            </select>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Type:</label>
+              <select class="form-control" ngModel name="type" required>
+                <option [ngValue]="true">Individuel</option>
+                <option [ngValue]="false">En équipe</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Console:</label>
+              <angular2-multiselect [data]="allConsoles"
+                                    [(ngModel)]="selectedItems" name="consoles"
+                                    [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)"
+                                    (onDeSelect)="OnItemDeSelect($event)"
+                                    (onSelectAll)="onSelectAll($event)"
+                                    (onDeSelectAll)="onDeSelectAll($event)" required>
+                <c-item>
+                  <ng-template let-item="item">
+                    <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
+                  </ng-template>
+                </c-item>
+              </angular2-multiselect>
+            </div>
+          </div>
+
         </div>
 
-        <div class="form-group">
-          <label class="control-label">Console:</label>
-          <angular2-multiselect [data]="allConsoles"
-                                [(ngModel)]="selectedItems"  name="consoles"
-                                [settings]="dropdownSettings"
-                                (onSelect)="onItemSelect($event)"
-                                (onDeSelect)="OnItemDeSelect($event)"
-                                (onSelectAll)="onSelectAll($event)"
-                                (onDeSelectAll)="onDeSelectAll($event)" required>
-            <c-item>
-              <ng-template let-item="item">
-                <label style="color: #333;min-width: 150px;">{{item.nom}}</label>
-              </ng-template>
-            </c-item>
-          </angular2-multiselect>
+        <div class="text-center">
+          <button [disabled]="!f.valid" type="submit" class="btn btn-info btn-fill btn-wd pull-right">Enregistrer
+          </button>
         </div>
+        <div class="clearfix"></div>
+      </div>
+    </form>
 
-        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Enregistrer</button>
-
-      </form>
-
-    </div>
   </div>
-
 </div>
-
