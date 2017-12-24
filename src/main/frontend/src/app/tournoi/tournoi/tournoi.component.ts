@@ -9,6 +9,8 @@ import {Tournoi} from "../../../models/Tournoi";
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import {BsModalComponent} from "ng2-bs3-modal";
+import {Joueur} from "../../../models/Joueur";
+import {JoueurService} from "../../services/joueur.service";
 
 declare var jquery:any;
 declare var $ :any;
@@ -25,7 +27,7 @@ export class TournoiComponent implements OnInit {
   mot:string="";
   currentPage:number=0;
   size:number=5;
-
+  joueur: Joueur = new Joueur();
   pages:Array<number>;
 
   tournoi:Tournoi = new Tournoi();
@@ -35,7 +37,8 @@ export class TournoiComponent implements OnInit {
     public tournoiService:TournoiService,
     public router:Router,
     public _config: Config,
-    public modal: Modal
+    public modal: Modal,
+    public joueurService: JoueurService
   ) { }
 
   ngOnInit() {
@@ -47,7 +50,20 @@ export class TournoiComponent implements OnInit {
         console.log(err);
       })
   }
+  participer(tournoi){
+    this.joueurService.getJoueur(1)
+      .subscribe(data => {
+        this.joueur = data;
+        console.log(tournoi)
+        tournoi.JoueursInscris.push(data);
+        //this.tournoiService.participer(tournoi);
+      }, err => {
+        console.log(err);
+      });
+
+  }
   mouseEnter(A){
+
     console.log(A);
     $('.thumbnail').hover(
       function(){

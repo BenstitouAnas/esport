@@ -61,6 +61,11 @@ public class TournoisRestService {
 
         return tournoisMetier.updateTournois(id, tournois);
     }
+    @RequestMapping(value = "/tournois/{id}/participer", method = RequestMethod.PUT)
+    public Tournois participer(@PathVariable Long id, @RequestBody Tournois tournois) {
+        return tournoisMetier.updateTournois(id, tournois);
+    }
+
 
     @RequestMapping(value = "/tournois/{id}", method = RequestMethod.GET)
     public Tournois getTournois(@PathVariable Long id) {

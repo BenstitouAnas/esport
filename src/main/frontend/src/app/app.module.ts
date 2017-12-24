@@ -61,6 +61,7 @@ import { ActialitesComponent } from './actualite/actialites/actialites.component
 import { NewActialiteComponent } from './actualite/new-actialite/new-actialite.component';
 import { EditActialiteComponent } from './actualite/edit-actialite/edit-actialite.component';
 import {ActualiteService} from "./services/actualite.service";
+import {JoueurService} from "./services/joueur.service";
 
 
 const appRouter: Routes = [
@@ -192,7 +193,8 @@ const appRouter: Routes = [
     OrganisateurService,
     JournalisteService,
     ActualiteService,
-    TournoiService
+    TournoiService,
+    JoueurService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
-import {Actualite} from "./Actualite";
+import {TournoiIndividuel} from "./TournoiIndividuel";
 
-export class Journaliste{
+export class Joueur{
   id: number = null;
   organisateur: string = "";
-  actualites: Array<Actualite> = new Array();
+  Tournois: Array<TournoiIndividuel> = new Array();
   nom: string = "";
   prenom: string = "";
 

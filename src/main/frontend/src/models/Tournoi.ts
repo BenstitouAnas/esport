@@ -3,6 +3,7 @@ import { Rounds } from './Rounds';
 import { Organisateur } from './Organisateur';
 import { Console } from './Console';
 import { Local } from './Local';
+import {Joueur} from "./Joueur";
 
 export class Tournoi {
   id: number = null;

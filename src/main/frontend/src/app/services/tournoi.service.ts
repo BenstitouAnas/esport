@@ -39,7 +39,10 @@ export class TournoiService {
     return this._http.put(this._tournoisUrl + tournoi.id, tournoi)
       .map(resp => resp.json());
   }
-
+  participer(tournoi:Tournoi){
+    return this._http.put(this._tournoisUrl + tournoi.id +"/participer", tournoi)
+      .map(resp => resp.json());
+  }
   deleteTournoi(id:number){
     return this._http.delete(this._tournoisUrl + id)
       .map(resp => resp.json());

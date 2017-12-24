@@ -67,6 +67,8 @@
         <div class="caption">
           <h4>{{tournoi.titre}}</h4>
           <p>{{tournoi.organisateur.nom}} {{tournoi.organisateur.prenom}}</p>
+          <!--Test if Organisateur ou Joueur ou equipe -->
+          <div>
           <p *ngIf="tournoi.publie === false" ><a (click)="publierTournoi(tournoi.id)" class="label label-success">Publier</a>
           </p>
           <p *ngIf="tournoi.publie === true" ><a (click)="genererTournoi(tournoi.id)" class="label label-success">Générer</a>
@@ -74,6 +76,11 @@
           <p><a (click)="onEditTournoi(tournoi.id)" class="label label-info">Modifier</a>
             <a (click)="onDeleteTournoi(tournoi)" class="label label-danger">Supprimer</a>
           </p>
+          </div>
+          <div>
+            <p ><a (click)="participer(tournoi)" class="label label-success">Participer</a>
+            </p>
+          </div>
         </div>
         <img class="affiche "src="{{tournoi.jeu.afficheUrl}}" alt="...">
       </div>
