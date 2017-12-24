@@ -1,5 +1,8 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,10 +21,12 @@ public class Joueur extends Utilisateur implements Serializable {
 
     }
 
+    @JsonIgnore
     public List<TournoisIndividuel> getTournois() {
         return tournois;
     }
 
+    @JsonSetter
     public void setTournois(List<TournoisIndividuel> tournois) {
         this.tournois = tournois;
     }

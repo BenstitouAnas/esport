@@ -16,7 +16,7 @@ public class TournoisIndividuel extends Tournois implements Serializable {
             joinColumns = @JoinColumn(name = "Tournoi_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "Joueur_ID", referencedColumnName = "ID")
     )
-    private List<Joueur> joueurInscrit = new ArrayList<Joueur>();
+    private List<Joueur> joueurInscrit;
     private String test = "Tournois Individuel";
 
     public TournoisIndividuel() {

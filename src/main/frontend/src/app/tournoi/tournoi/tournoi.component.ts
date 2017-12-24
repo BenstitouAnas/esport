@@ -50,16 +50,30 @@ export class TournoiComponent implements OnInit {
         console.log(err);
       })
   }
-  participer(tournoi){
-    this.joueurService.getJoueur(1)
+  onParticiper(tournoi:Tournoi){
+    this.joueurService.getJoueur(3)
       .subscribe(data => {
         this.joueur = data;
-        console.log(tournoi)
-        tournoi.joueurInscrit.push(data)
+        // console.log(data);
+        this.tournoi.joueurInscrit.push(this.joueur)
         //this.tournoiService.participer(tournoi);
       }, err => {
         console.log(err);
       });
+
+    this.tournoiService.getTournoi(tournoi.id)
+      .subscribe(data => {
+        console.log(data)
+      }, err => {
+        console.log(err)
+      })
+
+    this.tournoiService.participer(tournoi)
+      .subscribe(data => {
+        console.log(data)
+      }, err => {
+        console.log(err)
+      })
 
   }
   mouseEnter(A){

@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Utilisateur implements Serializable{
+public abstract class Utilisateur implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

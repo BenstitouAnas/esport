@@ -22,7 +22,7 @@ export class Tournoi {
 
   nbEquipes: number = 2;
   nbJoueurs: number = 4;
-  joueurInscrit: Array<Joueur> = null;
+  joueurInscrit: Array<Joueur> = new Array();
   type: string = "";
 
   enLigne: boolean = true;
