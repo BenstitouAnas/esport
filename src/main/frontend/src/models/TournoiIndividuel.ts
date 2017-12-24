@@ -16,7 +16,6 @@ export class TournoiIndividuel {
   local: Local = null;
   console: Console = null
   jeu: Jeu = null;
-  utilisateur: Organisateur = null;
-  joueurInscrit: Array<Joueur> = null;
+  utilisateur: Organisateur = null
   nbrJoueurs: number = 4;
 }

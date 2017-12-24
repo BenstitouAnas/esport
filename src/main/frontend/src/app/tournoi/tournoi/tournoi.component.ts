@@ -55,7 +55,7 @@ export class TournoiComponent implements OnInit {
       .subscribe(data => {
         this.joueur = data;
         console.log(tournoi)
-        tournoi.JoueursInscris.push(data);
+        tournoi.joueurInscrit.push(data)
         //this.tournoiService.participer(tournoi);
       }, err => {
         console.log(err);
