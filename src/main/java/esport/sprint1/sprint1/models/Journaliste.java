@@ -1,5 +1,8 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
@@ -11,6 +14,7 @@ public class Journaliste extends Utilisateur implements Serializable {
     @OneToMany(mappedBy = "m_Writer")
     private List<Actualite> m_Acts;
 
+    @JsonIgnore
     public List<Actualite> getM_Acts() {
         return m_Acts;
     }
@@ -24,6 +28,8 @@ public class Journaliste extends Utilisateur implements Serializable {
         this.m_Acts = m_Acts;
     }
     public Journaliste(){}
+
+    @JsonSetter
     public void setM_Acts(List<Actualite> m_Acts) {
         this.m_Acts = m_Acts;
     }

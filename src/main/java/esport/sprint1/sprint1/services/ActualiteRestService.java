@@ -4,6 +4,9 @@ package esport.sprint1.sprint1.services;
 import esport.sprint1.sprint1.metier.ActualiteMetier;
 import esport.sprint1.sprint1.models.Actualite;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +37,15 @@ public class ActualiteRestService {
     @RequestMapping(value = "/actualites/{id}", method = RequestMethod.PUT)
     public Actualite updateActualite(@PathVariable Long id,  @RequestBody Actualite c) {
         return actualiteMetier.updateActualite(id, c);
+    }
+
+    @RequestMapping(value = "/actualites/chercher", method = RequestMethod.GET)
+    public Page<Actualite> chercherActualite(
+            @RequestParam(name = "mot", defaultValue = "") String mot,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size
+    ) {
+        return actualiteMetier.chercherActualite("%" + mot + "%", new PageRequest(page, size));
     }
 
     @Autowired

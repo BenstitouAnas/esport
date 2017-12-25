@@ -8,7 +8,6 @@ import {Config} from "../../../models/Config";
 import {Tournoi} from "../../../models/Tournoi";
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
-import {BsModalComponent} from "ng2-bs3-modal";
 import {Joueur} from "../../../models/Joueur";
 import {JoueurService} from "../../services/joueur.service";
 
@@ -27,7 +26,7 @@ export class TournoiComponent implements OnInit {
   mot:string="";
   currentPage:number=0;
   size:number=5;
-  joueur: Joueur = new Joueur();
+  joueur: Joueur;
   pages:Array<number>;
 
   tournoi:Tournoi = new Tournoi();
@@ -38,7 +37,7 @@ export class TournoiComponent implements OnInit {
     public router:Router,
     public _config: Config,
     public modal: Modal,
-    public joueurService: JoueurService
+    public joueurService:JoueurService
   ) { }
 
   ngOnInit() {
@@ -49,33 +48,43 @@ export class TournoiComponent implements OnInit {
       }, err => {
         console.log(err);
       })
-  }
-  onParticiper(tournoi:Tournoi){
-    this.joueurService.getJoueur(3)
+
+    this.joueurService.getJoueur(1)
       .subscribe(data => {
-        this.joueur = data;
-        // console.log(data);
-        this.tournoi.joueurInscrit.push(this.joueur)
-        //this.tournoiService.participer(tournoi);
+        this.joueur = data
       }, err => {
         console.log(err);
       });
 
+    console.log("---------- Joueuuuuuuur ---------")
+    console.log(this.joueur)
+  }
+  onParticiper(tournoi:Tournoi){
     this.tournoiService.getTournoi(tournoi.id)
       .subscribe(data => {
         console.log(data)
+        this.tournoi = data
+        this.tournoi.joueurInscrit.push(this.joueur)
+        console.log("********************************")
+        console.log(this.tournoi)
+        this.participe()
       }, err => {
         console.log(err)
       })
 
-    this.tournoiService.participer(tournoi)
+
+
+  }
+
+  participe(){
+    this.tournoiService.participer(this.tournoi)
       .subscribe(data => {
         console.log(data)
       }, err => {
         console.log(err)
       })
-
   }
+
   mouseEnter(A){
 
     console.log(A);

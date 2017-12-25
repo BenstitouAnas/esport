@@ -41,9 +41,9 @@ export class TournoiService {
       .map(resp => resp.json());
   }
   participer(tournoi:Tournoi){
-    console.log("url://" + this._tournoisUrl + tournoi.id + "/participer")
-    console.log(tournoi)
 
+    console.log("------------------------------")
+    console.log(tournoi)
     return this._http.put(this._tournoisUrl + tournoi.id +"/participer", tournoi)
       .map(resp => resp.json());
   }
