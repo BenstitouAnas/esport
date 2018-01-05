@@ -62,6 +62,8 @@ import { NewActialiteComponent } from './actualite/new-actialite/new-actialite.c
 import { EditActialiteComponent } from './actualite/edit-actialite/edit-actialite.component';
 import {ActualiteService} from "./services/actualite.service";
 import {JoueurService} from "./services/joueur.service";
+import { BoutiqueComponent } from './boutique/boutique.component';
+import {ProduitsService} from "./services/produits.service";
 
 
 const appRouter: Routes = [
@@ -120,6 +122,8 @@ const appRouter: Routes = [
   {path: 'edit-actualites/:id', component: EditActialiteComponent},
   {path: 'new-actualites', component: NewActialiteComponent},
 
+  {path: 'boutique', component: BoutiqueComponent},
+
   {path: 'new-ville', component: NewVilleComponent},
   {path: 'tournois', component: TournoiComponent},
   {path: 'edit-tournoi/:id', component: EditTournoiComponent},
@@ -163,7 +167,8 @@ const appRouter: Routes = [
     NewJournalistesComponent,
     ActialitesComponent,
     NewActialiteComponent,
-    EditActialiteComponent
+    EditActialiteComponent,
+    BoutiqueComponent
   ],
   imports: [
     AngularMultiSelectModule,
@@ -194,7 +199,8 @@ const appRouter: Routes = [
     JournalisteService,
     ActualiteService,
     TournoiService,
-    JoueurService
+    JoueurService,
+    ProduitsService
   ],
   bootstrap: [AppComponent]
 })

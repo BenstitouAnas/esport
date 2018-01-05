@@ -17,6 +17,7 @@ export const ROUTES: RouteInfo[] = [
     //{ path: 'jeux', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
     { path: 'journalistes', title: 'Journalistes',  icon:'ti-sharethis', class: '' },
     { path: 'actualites', title: 'Actualites',  icon:'ti-facebook', class: '' },
+    { path: 'boutique', title: 'Boutique',  icon:'ti-shopping-cart', class: '' },
     //{ path: '', title: 'Deconnexion',  icon:'ti-export', class: 'active-pro' },
 ];
 
