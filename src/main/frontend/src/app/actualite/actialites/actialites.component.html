@@ -1,3 +1,38 @@
-<p>
-  actialites works!
-</p>
+<div class="col-lg-12">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"></h4>
+    </div>
+    <div class="content">
+
+
+      <div class="">
+        <div class="row blog-row">
+          <div class="col-md-6 col-sm-6 col-xs-12 margin_bottom30" *ngFor="let actualite of pageActualites?.content">
+            <a href="">
+              <img class="img-responsive center-block" src="{{actualite.backGround}}" height="250">
+            </a>
+            <div class="blog-content bg-white">
+              <h3>{{actualite.titre}}</h3>
+              <p>Date : {{actualite.dateEcriture | date: 'yyyy-MM-dd HH:MM'}}</p>
+              <p>{{actualite.contenu.substr(0, 255)}} ...<a href="" class="heading_color"> Continue Reading</a></p>
+              <hr>
+              <p><span>Share :
+                  <a href=""><i class="fa fa-facebook margin_left10" aria-hidden="true"></i></a>
+                  <a href=""><i class="fa fa-twitter margin_left10" aria-hidden="true"></i></a>
+                  <a href=""><i class="fa fa-google-plus margin_left10" aria-hidden="true"></i></a>
+                 </span>
+                <span class="pull-right">By : <strong><a href="">{{actualite.m_Writer.nom}} {{actualite.m_Writer.prenom}}</a></strong></span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <script src="https://use.fontawesome.com/1dec14be15.js"></script>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

@@ -18,21 +18,28 @@ public class Actualite implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     private String titre;
+
+    @Lob
     private String contenu;
-    private Date Date_Ecriture;
+
+    private Date dateEcriture;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Ecrivain_ID")
     private Journaliste m_Writer;
 
+    private String backGround;
+
     public Actualite() {
     }
 
-    public Actualite(String titre, String contenu, Date date_Ecriture, Journaliste m_Writer) {
+    public Actualite(String titre, String contenu, Date dateEcriture, Journaliste m_Writer, String backGround) {
         this.titre = titre;
         this.contenu = contenu;
-        Date_Ecriture = date_Ecriture;
+        this.dateEcriture = dateEcriture;
         this.m_Writer = m_Writer;
+        this.backGround = backGround;
     }
 
     public String getTitre() {
@@ -51,12 +58,12 @@ public class Actualite implements Serializable {
         this.contenu = contenu;
     }
 
-    public Date getDate_Ecriture() {
-        return Date_Ecriture;
+    public Date getDateEcriture() {
+        return dateEcriture;
     }
 
-    public void setDate_Ecriture(Date date_Ecriture) {
-        Date_Ecriture = date_Ecriture;
+    public void setDateEcriture(Date dateEcriture) {
+        this.dateEcriture = dateEcriture;
     }
 
     public Journaliste getM_Writer() {
@@ -65,5 +72,13 @@ public class Actualite implements Serializable {
 
     public void setM_Writer(Journaliste m_Writer) {
         this.m_Writer = m_Writer;
+    }
+
+    public String getBackGround() {
+        return backGround;
+    }
+
+    public void setBackGround(String backGround) {
+        this.backGround = backGround;
     }
 }

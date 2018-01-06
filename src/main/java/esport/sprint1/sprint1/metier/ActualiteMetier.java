@@ -14,4 +14,6 @@ public interface ActualiteMetier {
     Actualite updateActualite(Long id, Actualite c);
 
     Page<Actualite> chercherActualite(String mot, Pageable pageable);
+
+    List<Actualite> latestActualites();
 }

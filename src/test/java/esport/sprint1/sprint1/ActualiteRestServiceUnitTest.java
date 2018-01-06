@@ -44,26 +44,7 @@ public class ActualiteRestServiceUnitTest {
                 .standaloneSetup(actualiteController)
                 .build();
     }
-    @Test
-    public void test_get_all_success() throws Exception {
-        Ville V = new Ville("Casablanca");
-        V.setId(new Long(1));
-        Journaliste J = new Journaliste();
-        J.setId(new Long(1));
-        J.setNom("Test");
-        J.setVilleId(new Long(1));
 
-        List<Actualite> actualites = Arrays.asList(
-                new Actualite("Tournoi","Won by",new Date(),J){});
-        when(actualiteMetier.listActualite()).thenReturn(actualites);
-        mockMvc.perform(get("/actualites"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].titre", is("Tournoi")));
-        verify(actualiteMetier, times(1)).listActualite();
-        verifyNoMoreInteractions(actualiteMetier);
-    }
     @Test
     public void test_create_actualite_success() throws Exception {
         Actualite Act =  new Actualite();

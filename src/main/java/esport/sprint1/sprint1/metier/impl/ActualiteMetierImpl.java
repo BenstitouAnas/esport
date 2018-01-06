@@ -48,4 +48,9 @@ public class ActualiteMetierImpl implements ActualiteMetier {
     public Page<Actualite> chercherActualite(String mot, Pageable pageable) {
         return this.actualiteRepository.chercherActualite(mot, pageable);
     }
+
+    @Override
+    public List<Actualite> latestActualites() {
+        return actualiteRepository.latestActs();
+    }
 }
