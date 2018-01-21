@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/cor
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {User} from "../../_models/user";
 
 @Component({
     moduleId: module.id,
@@ -16,6 +17,8 @@ export class NavbarComponent implements OnInit{
     private toggleButton;
     private sidebarVisible: boolean;
 
+    user: User;
+
     @ViewChild("navbar-cmp") button;
 
     constructor(location:Location, private renderer : Renderer, private element : ElementRef) {
@@ -28,6 +31,10 @@ export class NavbarComponent implements OnInit{
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+
+        this.user = JSON.parse(localStorage.getItem('currentUser'))
+        console.log(this.user)
+
     }
     getTitle(){
         var titlee = window.location.pathname;

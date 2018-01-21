@@ -12,6 +12,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'tournois', title: 'Tournois',  icon: 'ti-cup', class: '' },
     { path: 'user/1', title: 'Profile',  icon:'ti-user', class: '' },
+    { path: 'messageries', title: 'Messages',  icon:'ti-email', class: '' },
     { path: 'consoles', title: 'Consoles',  icon:'ti-view-list-alt', class: '' },
     { path: 'jeux', title: 'Jeux',  icon:'ti-game', class: '' },
     //{ path: 'jeux', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },

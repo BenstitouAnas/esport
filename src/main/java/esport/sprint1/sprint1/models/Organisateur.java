@@ -22,9 +22,10 @@ public class Organisateur extends Utilisateur implements Serializable{
     public Organisateur() {
     }
 
-    public Organisateur(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at, String organisateur) {
-        super(nom, prenom, villeId, nomUtilisateur, email, adresse, pays, codePostale, apropos, citation, levele, points, newUser, active, confirm, photo, coverImg, created_at, updated_at);
+    public Organisateur(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at, String password, String organisateur, List<Tournois> tournois) {
+        super(nom, prenom, villeId, nomUtilisateur, email, adresse, pays, codePostale, apropos, citation, levele, points, newUser, active, confirm, photo, coverImg, created_at, updated_at, password);
         this.organisateur = organisateur;
+        this.tournois = tournois;
     }
 
     public String getOrganisateur() {

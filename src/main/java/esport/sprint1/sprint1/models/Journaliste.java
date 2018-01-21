@@ -23,10 +23,11 @@ public class Journaliste extends Utilisateur implements Serializable {
         this.m_Acts = m_Acts;
     }
 
-    public Journaliste(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at, List<Actualite> m_Acts) {
-        super(nom, prenom, villeId, nomUtilisateur, email, adresse, pays, codePostale, apropos, citation, levele, points, newUser, active, confirm, photo, coverImg, created_at, updated_at);
+    public Journaliste(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at, String password, List<Actualite> m_Acts) {
+        super(nom, prenom, villeId, nomUtilisateur, email, adresse, pays, codePostale, apropos, citation, levele, points, newUser, active, confirm, photo, coverImg, created_at, updated_at, password);
         this.m_Acts = m_Acts;
     }
+
     public Journaliste(){}
 
     @JsonSetter

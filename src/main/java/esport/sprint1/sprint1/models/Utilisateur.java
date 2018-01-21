@@ -1,11 +1,20 @@
 package esport.sprint1.sprint1.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(name = "organisateur", value = Organisateur.class),
+        @JsonSubTypes.Type(name = "journaliste", value = Journaliste.class),
+        @JsonSubTypes.Type(name = "joueur", value = Joueur.class)
+})
 public abstract class Utilisateur implements Serializable{
 
     @Id
@@ -40,10 +49,13 @@ public abstract class Utilisateur implements Serializable{
     private Date created_at = new Date();
     private Date updated_at;
 
+    private String password;
+
     public Utilisateur() {
     }
 
-    public Utilisateur(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at) {
+
+    public Utilisateur(String nom, String prenom, Long villeId, String nomUtilisateur, String email, String adresse, String pays, int codePostale, String apropos, String citation, int levele, int points, boolean newUser, boolean active, boolean confirm, String photo, String coverImg, Date created_at, Date updated_at, String password) {
         this.nom = nom;
         this.prenom = prenom;
         this.villeId = villeId;
@@ -63,6 +75,7 @@ public abstract class Utilisateur implements Serializable{
         this.coverImg = coverImg;
         this.created_at = created_at;
         this.updated_at = updated_at;
+        this.password = password;
     }
 
     public Long getId() {
@@ -223,5 +236,13 @@ public abstract class Utilisateur implements Serializable{
 
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -32,7 +32,7 @@ public class ProduitRestService {
         return produitMetier.deleteProduit(id);
     }
 
-    @RequestMapping(value = "/prosuits/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/produits/{id}", method = RequestMethod.GET)
     public Produit getProduit(@PathVariable Long id) {
         return produitMetier.getProduit(id);
     }

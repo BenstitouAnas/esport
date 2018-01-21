@@ -64,75 +64,23 @@ import {ActualiteService} from "./services/actualite.service";
 import {JoueurService} from "./services/joueur.service";
 import { BoutiqueComponent } from './boutique/boutique.component';
 import {ProduitsService} from "./services/produits.service";
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { HomeComponent } from './home/home/home.component';
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './register/register/register.component';
+import {AuthGuard} from "./_guards/auth.guard";
+import {AlertService} from "./_services/alert.service";
+import {AuthenticationService} from "./_services/authentication.service";
+import {UserService} from "./_services/user.service";
+import {JwtInterceptor} from "./_helpers/jwt.interceptor";
+import {fakeBackendProvider} from "./_helpers/fake-backend";
+import {AlertComponent} from "./_directives/alert.component";
+import {HttpClientModule} from "@angular/common/http";
+import {routing} from "./app.routing";
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MesmatchesComponent } from './mesmatches/mesmatches.component';
 
-const appRouter: Routes = [
-
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'user',
-    component: UserComponent
-  },
-  {
-    path: 'table',
-    component: TableComponent
-  },
-  {
-    path: 'typography',
-    component: TypographyComponent
-  },
-  {
-    path: 'icons',
-    component: IconsComponent
-  },
-  {
-    path: 'notifications',
-    component: NotificationsComponent
-  },
-  {
-    path: 'upgrade',
-    component: UpgradeComponent
-  },
-
-  {path: 'consoles', component: ConsoleComponent},
-  {path: 'edit-console/:id', component: EditConsoleComponent},
-  {path: 'new-console', component: NewConsoleComponent},
-
-  {path: 'jeux', component: JeuComponent},
-  {path: 'edit-jeu/:id', component: EditJeuComponent},
-  {path: 'new-jeu', component: NewJeuComponent},
-
-  {path: 'villes', component: VilleComponent},
-  {path: 'edit-ville/:id', component: EditVilleComponent},
-  {path: 'new-ville', component: NewVilleComponent},
-
-  {path: 'journalistes', component: JournalistesComponent},
-  {path: 'edit-journaliste/:id', component: EditJournalistesComponent},
-  {path: 'new-journaliste', component: NewJournalistesComponent},
-
-  {path: 'actualites', component: ActialitesComponent},
-  {path: 'edit-actualites/:id', component: EditActialiteComponent},
-  {path: 'new-actualites', component: NewActialiteComponent},
-
-  {path: 'boutique', component: BoutiqueComponent},
-
-  {path: 'new-ville', component: NewVilleComponent},
-  {path: 'tournois', component: TournoiComponent},
-  {path: 'edit-tournoi/:id', component: EditTournoiComponent},
-  {path: 'new-tournoi', component: NewTournoiComponent},
-  {path: 'publier-tournoi/:id', component: PublierTournoiComponent},
-  {path: 'detail-tournoi/:id', component: DetailTournoiComponent},
-
-  {path: 'user/:id', component: UserComponent}
-];
 
 @NgModule({
   declarations: [
@@ -168,13 +116,23 @@ const appRouter: Routes = [
     ActialitesComponent,
     NewActialiteComponent,
     EditActialiteComponent,
-    BoutiqueComponent
+    BoutiqueComponent,
+    MessagerieComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+
+    AppComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    MesmatchesComponent
   ],
   imports: [
     AngularMultiSelectModule,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRouter),
     FormsModule,
     UiSwitchModule,
     CommonModule,
@@ -187,7 +145,12 @@ const appRouter: Routes = [
     }),
     ModalModule.forRoot(),
     BootstrapModalModule,
-    BsModalModule
+    BsModalModule,
+
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    routing
   ],
   providers: [
     Config,
@@ -200,7 +163,20 @@ const appRouter: Routes = [
     ActualiteService,
     TournoiService,
     JoueurService,
-    ProduitsService
+    ProduitsService,
+
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
